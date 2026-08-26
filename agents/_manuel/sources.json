@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "source": {
+    "path": "Set MANUEL_SOURCE_PDF to a lawfully obtained local copy",
+    "title": "Beyond Feelings: A Guide to Critical Thinking",
+    "author": "Vincent Ryan Ruggiero",
+    "edition": "Ninth Edition",
+    "year": 2012,
+    "pdf_pages": 257,
+    "sha256": "F7334009EE0D2C15F3AE52B27BE97229913051F715E8A80941233870A886D1FE"
+  },
+  "principles": [
+    {"id":"P01","name":"把第一反应降级为候选项","category":"原书明确观点","chapter":"1","book_pages":"13-15","pdf_pages":"26-28","reference":"references/foundations.md","anchors":[{"pdf_page":26,"text":"Treat your first reaction"}]},
+    {"id":"P02","name":"按“调查—解释—判断”推进","category":"原书明确观点","chapter":"2","book_pages":"18-24","pdf_pages":"31-37","reference":"references/foundations.md","anchors":[{"pdf_page":37,"text":"investigation, interpretation"}]},
+    {"id":"P03","name":"把直觉当线索，不当裁决","category":"原书明确观点","chapter":"2","book_pages":"22-24","pdf_pages":"35-37","reference":"references/foundations.md","anchors":[{"pdf_page":36,"text":"intuition"}]},
+    {"id":"P04","name":"用有纪律的讨论增进理解","category":"原书明确观点","chapter":"2","book_pages":"25-27","pdf_pages":"38-40","reference":"references/foundations.md","anchors":[{"pdf_page":38,"text":"Critical Thinking and Discussion"}]},
+    {"id":"P05","name":"以可错性追求被发现的真相","category":"原书明确观点","chapter":"3","book_pages":"34-38","pdf_pages":"47-51","reference":"references/foundations.md","anchors":[{"pdf_page":50,"text":"Truth Is Discovered, Not Created"}]},
+    {"id":"P06","name":"校准“我知道”的强度","category":"原书明确观点","chapter":"4","book_pages":"47-56","pdf_pages":"60-69","reference":"references/foundations.md","anchors":[{"pdf_page":69,"text":"admission of ignorance"}]},
+    {"id":"P07","name":"负责任地形成意见","category":"原书明确观点","chapter":"5","book_pages":"65-68","pdf_pages":"78-81","reference":"references/foundations.md","anchors":[{"pdf_page":80,"text":"Forming Opinions Responsibly"}]},
+    {"id":"P08","name":"按证据类型问对问题","category":"原书明确观点","chapter":"6; 18","book_pages":"73-79; 193-194","pdf_pages":"86-92; 206-207","reference":"references/evidence-and-argument.md","anchors":[{"pdf_page":86,"text":"Kinds of Evidence"}]},
+    {"id":"P09","name":"用证据充足度决定是否下结论","category":"原书明确观点","chapter":"6; 17","book_pages":"80-81; 187-190","pdf_pages":"93-94; 200-203","reference":"references/evidence-and-argument.md","anchors":[{"pdf_page":93,"text":"Evidence is sufficient"}]},
+    {"id":"P10","name":"先排除巧合，再谈因果","category":"原书明确观点","chapter":"3; 10","book_pages":"38-43; 121-123","pdf_pages":"51-56; 134-136","reference":"references/evidence-and-argument.md","anchors":[{"pdf_page":51,"text":"cause-and-effect"}]},
+    {"id":"P11","name":"拆成前提、隐含前提和结论","category":"原书明确观点","chapter":"7","book_pages":"83-90","pdf_pages":"96-103","reference":"references/evidence-and-argument.md","anchors":[{"pdf_page":98,"text":"Correct premises plus valid reasoning"}]},
+    {"id":"P12","name":"识别并压住“我的更好”","category":"原书明确观点","chapter":"8","book_pages":"94-98","pdf_pages":"107-111","reference":"references/error-control.md","anchors":[{"pdf_page":110,"text":"Controlling"}]},
+    {"id":"P13","name":"做一次视角错误扫描","category":"原书明确观点","chapter":"9; 13","book_pages":"102-114; 144-146","pdf_pages":"115-127; 157-159","reference":"references/error-control.md","anchors":[{"pdf_page":158,"text":"Poverty of aspect"}]},
+    {"id":"P14","name":"在程序层统一标准并延迟结论","category":"原书明确观点","chapter":"10; 13","book_pages":"115-125; 146-147","pdf_pages":"128-138; 159-160","reference":"references/error-control.md","anchors":[{"pdf_page":159,"text":"Biased consideration"}]},
+    {"id":"P15","name":"在表达层检查逻辑和语言","category":"原书明确观点","chapter":"11; 13","book_pages":"126-134; 147-149","pdf_pages":"139-147; 160-162","reference":"references/error-control.md","anchors":[{"pdf_page":161,"text":"Arguing in a circle"}]},
+    {"id":"P16","name":"在受挑战时防止反应性错误","category":"原书明确观点","chapter":"12; 13","book_pages":"135-143; 149-150","pdf_pages":"148-156; 162-163","reference":"references/error-control.md","anchors":[{"pdf_page":162,"text":"Automatic rejection"}]},
+    {"id":"P17","name":"按组合而非标签调试推理","category":"原书明确观点","chapter":"13","book_pages":"144-152","pdf_pages":"157-165","reference":"references/error-control.md","anchors":[{"pdf_page":157,"text":"The Errors in Combination"}]},
+    {"id":"P18","name":"建立个人偏差清单并在事前调用","category":"原书明确观点","chapter":"14","book_pages":"158-161","pdf_pages":"171-174","reference":"references/inquiry-and-judgment.md","anchors":[{"pdf_page":172,"text":"Critical Thinking Inventory"}]},
+    {"id":"P19","name":"先观察，再反思观察的意义","category":"原书明确观点","chapter":"15","book_pages":"164-169","pdf_pages":"177-182","reference":"references/inquiry-and-judgment.md","anchors":[{"pdf_page":181,"text":"Becoming More Observant"}]},
+    {"id":"P20","name":"把宽泛议题压缩成可回答问题","category":"原书明确观点","chapter":"16","book_pages":"171-177","pdf_pages":"184-190","reference":"references/inquiry-and-judgment.md","anchors":[{"pdf_page":185,"text":"List as many aspects"}]},
+    {"id":"P21","name":"围绕事实与知情意见开展调查","category":"原书明确观点","chapter":"17","book_pages":"178-190","pdf_pages":"191-203","reference":"references/inquiry-and-judgment.md","anchors":[{"pdf_page":198,"text":"Evaluate your information sources"}]},
+    {"id":"P22","name":"先压缩长材料，再评价","category":"原书明确观点","chapter":"17; 7","book_pages":"190-191; 88-90","pdf_pages":"203-204; 101-103","reference":"references/inquiry-and-judgment.md","anchors":[{"pdf_page":203,"text":"identify the key assertions"}]},
+    {"id":"P23","name":"形成并精确表达判断","category":"原书明确观点","chapter":"18","book_pages":"192-204","pdf_pages":"205-217","reference":"references/inquiry-and-judgment.md","anchors":[{"pdf_page":213,"text":"Strive for a balanced view"}]},
+    {"id":"P24","name":"明示认知类型与核实状态","category":"基于原书的推导","chapter":"Preface; 3; 4; 7; 18","book_pages":"xi; 34-38; 55-56; 84-90; 198-203","pdf_pages":"12; 47-51; 68-69; 97-103; 211-216","reference":"references/inquiry-and-judgment.md","derivation":"现实事实可被发现但信念可错；知道须有根据；假设可作隐含前提；结论须检查连接；价值评价须精确表达。因此事实性主张还需标明是否已核实。","anchors":[{"pdf_page":68,"text":"assuming and guessing"},{"pdf_page":97,"text":"The Parts of an Argument"}]},
+    {"id":"P25","name":"以理解和证据说服，而非压服","category":"原书明确观点","chapter":"19","book_pages":"206-215","pdf_pages":"219-228","reference":"references/persuasion.md","anchors":[{"pdf_page":228,"text":"Respect your audience"}]},
+    {"id":"P26","name":"把认知结论与行动决定分开","category":"基于原书的推导","chapter":"2; 6; 17; 18","book_pages":"18-24; 80-81; 187-190; 192-204","pdf_pages":"31-37; 93-94; 200-203; 205-217","reference":"references/inquiry-and-judgment.md","derivation":"调查、解释、判断有次序；结论强度受证据约束；行动还依赖目标、价值和条件。因此行动紧迫性不能抬高事实确信度。","anchors":[{"pdf_page":205,"text":"Judgments are conclusions"},{"pdf_page":217,"text":"The critical thinking strategy"}]}
+  ]
+}
