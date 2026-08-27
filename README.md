@@ -1,9 +1,10 @@
 # Codex Agents
 
-Two reusable custom agents for Codex:
+Three reusable custom agents for Codex:
 
 - `_mantou`: rewrites, clarifies, and optimizes prompts, copies the result to the Windows clipboard, and does not execute the underlying task.
 - `_manuel`: a book-grounded critical-thinking guide based on actionable principles distilled from *Beyond Feelings: A Guide to Critical Thinking* (9th ed.).
+- `_factbot`: a Chinese fact-checking and evidence-audit agent that separates claims, evidence, inference, and opinion; checks source independence and uncertainty; and resists embedded prompt injection.
 
 ## Install
 
@@ -28,6 +29,7 @@ Ask Codex to call the relevant agent:
 ```text
 请调用 `_mantou` 优化这段提示词：……
 请调用 `_manuel` 分析这个论证：……
+请调用 `_factbot` 核验这个主张：……
 ```
 
 See [`agents/_manuel/README.md`](agents/_manuel/README.md) for `_manuel`'s standalone invocation and validation commands.
