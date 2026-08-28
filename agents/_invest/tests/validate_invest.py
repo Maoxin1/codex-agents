@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT.parent / "_invest.toml"
+PRIVATE_RUNTIME_FILES = {"knowledge-map.local.md"}
 
 
 def parse_args() -> argparse.Namespace:
@@ -23,9 +24,14 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def public_files() -> list[Path]:
-    files = [CONFIG]
-    files.extend(path for path in ROOT.rglob("*") if path.is_file())
+def public_files(root: Path = ROOT, config: Path = CONFIG) -> list[Path]:
+    files = [config]
+    files.extend(
+        path
+        for path in root.rglob("*")
+        if path.is_file()
+        and path.relative_to(root).as_posix() not in PRIVATE_RUNTIME_FILES
+    )
     return files
 
 

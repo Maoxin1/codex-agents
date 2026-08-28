@@ -57,7 +57,8 @@ Copy-Item (Join-Path $investRoot 'knowledge-map.md') (Join-Path $investRoot 'kno
 ## 独立只读调用
 
 ```powershell
-& "$env:CODEX_HOME/agents/_invest/invoke_invest.ps1" -VaultPath '<path-to-your-obsidian-vault>' -Prompt '研究某家公司，投资期限3年，重点检查周期位置和估值。'
+$agentRoot = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME '.codex' }
+& (Join-Path $agentRoot 'agents/_invest/invoke_invest.ps1') -VaultPath '<path-to-your-obsidian-vault>' -Prompt '研究某家公司，投资期限3年，重点检查周期位置和估值。'
 ```
 
 若未设置 `CODEX_HOME`，脚本默认安装在 `$HOME/.codex/agents/_invest`。独立脚本固定为只读，适合测试确认门或生成研究方案。需要连续确认、正式研究或写入 Obsidian 时，请在 Codex 交互会话中原生调用 `_invest`。
