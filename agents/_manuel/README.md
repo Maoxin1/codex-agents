@@ -15,7 +15,8 @@
 即使当前会话尚未重新扫描 agent，也可直接加载同一持久配置：
 
 ```powershell
-& "$env:CODEX_HOME\agents\_manuel\invoke_manuel.ps1" -Prompt '请审计：新功能上线后投诉多了，所以它一定导致体验变差。'
+$agentRoot = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME '.codex' }
+& (Join-Path $agentRoot 'agents/_manuel/invoke_manuel.ps1') -Prompt '请审计：新功能上线后投诉多了，所以它一定导致体验变差。'
 ```
 
 默认使用 `gpt-5.6-terra` / `medium`。复杂、高价值且已有评测证明收益时，可显式传入 `-Model gpt-5.6-sol -Reasoning high`。
@@ -23,9 +24,10 @@
 ## 验证
 
 ```powershell
+$agentRoot = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME '.codex' }
 $env:PYTHONIOENCODING='utf-8'
-python "$env:CODEX_HOME\agents\_manuel\tests\validate_manuel.py"
-& "$env:CODEX_HOME\agents\_manuel\tests\run_behavior_eval.ps1" -CaseId 'causal_complaints'
+python (Join-Path $agentRoot 'agents/_manuel/tests/validate_manuel.py')
+& (Join-Path $agentRoot 'agents/_manuel/tests/run_behavior_eval.ps1') -CaseId 'causal_complaints'
 ```
 
 可用行为用例 ID 见 `tests/cases.json`。行为脚本只检查最终回答的保守词法契约；它是回归烟雾测试，不替代人工语义审查。若要额外核验本地合法取得的原书 PDF，请先设置 `MANUEL_SOURCE_PDF` 环境变量。

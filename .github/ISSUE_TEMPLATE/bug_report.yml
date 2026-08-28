@@ -1,0 +1,42 @@
+name: Bug report
+description: Report an installation, validation, or agent-package defect.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include API keys, private vault paths, holdings, or note contents.
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Installer
+        - _factbot
+        - _invest
+        - _mantou
+        - _manuel
+        - Documentation or validation
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Include the command or prompt, actual behavior, and expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Codex client, OS, PowerShell version, Python version, and commit SHA.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Use redacted or synthetic data only.
+    validations:
+      required: true
