@@ -11,7 +11,7 @@ $targetRoot = Join-Path $codexRoot "agents"
 
 New-Item -ItemType Directory -Path $targetRoot -Force | Out-Null
 
-$items = @("_factbot.toml", "_mantou.toml", "_manuel.toml", "_manuel")
+$items = @("_factbot.toml", "_invest.toml", "_invest", "_mantou.toml", "_manuel.toml", "_manuel")
 foreach ($item in $items) {
     $source = Join-Path $sourceRoot $item
     $target = Join-Path $targetRoot $item
@@ -21,5 +21,5 @@ foreach ($item in $items) {
     Copy-Item -LiteralPath $source -Destination $target -Recurse -Force:$Force
 }
 
-Write-Host "Installed _factbot, _mantou, and _manuel to $targetRoot"
+Write-Host "Installed _factbot, _invest, _mantou, and _manuel to $targetRoot"
 Write-Host "Restart Codex to reload custom agents."
