@@ -48,6 +48,16 @@ try {
     Assert-True (-not (Test-Path -LiteralPath (Join-Path $cleanRoot 'agents/_invest/_invest'))) 'Force update created nested _invest/_invest.'
     Assert-True (-not (Test-Path -LiteralPath (Join-Path $cleanRoot 'agents/_manuel/_manuel'))) 'Force update created nested _manuel/_manuel.'
 
+    $managedTarget = Join-Path $cleanRoot 'agents/_mantou.toml'
+    Set-Content -LiteralPath $managedTarget -Value 'local-managed-change' -Encoding utf8
+    $beforeWhatIf = (Get-FileHash -LiteralPath $managedTarget -Algorithm SHA256).Hash
+    & $installer -Force -WhatIf
+    $afterWhatIf = (Get-FileHash -LiteralPath $managedTarget -Algorithm SHA256).Hash
+    Assert-True ($beforeWhatIf -eq $afterWhatIf) '-WhatIf changed a managed target file.'
+    & $installer -Force
+    Assert-ManagedFilesMatch $cleanRoot
+    Assert-True ((Get-Content -Raw -LiteralPath $overlay).Trim() -eq 'private-local-overlay') 'Update after -WhatIf changed the private overlay.'
+
     $partialRoot = Join-Path $testRoot 'partial'
     $partialInvest = Join-Path $partialRoot 'agents/_invest'
     New-Item -ItemType Directory -Path $partialInvest -Force | Out-Null
@@ -67,6 +77,7 @@ try {
     Write-Host 'INSTALL VALIDATION PASSED'
     Write-Host '- clean installation matches all packaged files'
     Write-Host '- forced update is idempotent and preserves private overlays'
+    Write-Host '- WhatIf previews a forced update without changing managed files'
     Write-Host '- collision preflight performs no partial installation'
 }
 finally {
