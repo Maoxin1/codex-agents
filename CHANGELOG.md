@@ -6,6 +6,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-08-30
+
 ### Added
 
 - Windows CI for installer, agent validators, unit tests, PowerShell parsing, and TOML parsing.
@@ -13,6 +15,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Standalone documentation and static contract tests for `_factbot` and `_mantou`.
 - Repository-wide validation for local Markdown links, structured data, and common privacy leaks.
 - Contribution, security, issue, pull-request, and dependency-update configuration.
+- Runtime and model compatibility guidance plus a maintainer release checklist.
+- Installer `-WhatIf` support for previewing forced updates without changing files.
 
 ### Changed
 

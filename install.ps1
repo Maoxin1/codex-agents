@@ -1,4 +1,4 @@
-[CmdletBinding()]
+[CmdletBinding(SupportsShouldProcess)]
 param(
     [switch]$Force
 )
@@ -31,6 +31,11 @@ foreach ($item in $items) {
     if ((Test-Path -LiteralPath $target) -and -not $Force) {
         throw "Target already exists: $target. Re-run with -Force to overwrite."
     }
+}
+
+if (-not $PSCmdlet.ShouldProcess($targetRoot, "Install managed Codex agent files")) {
+    Write-Host "No files changed. Target would be $targetRoot"
+    return
 }
 
 New-Item -ItemType Directory -Path $targetRoot -Force | Out-Null

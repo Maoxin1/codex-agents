@@ -34,6 +34,12 @@ The installer copies the agent configuration files and support libraries to `$en
 ./install.ps1 -Force
 ```
 
+Preview a forced update without changing the target directory:
+
+```powershell
+./install.ps1 -Force -WhatIf
+```
+
 `-Force` updates only files managed by this package at their existing relative
 paths. It does not remove unmanaged local files such as
 `agents/_invest/knowledge-map.local.md`.
@@ -49,6 +55,8 @@ Maintainers can run the complete local validation suite with
 `./tests/validate_repository.ps1`.
 
 Restart Codex after installation so the custom-agent list is reloaded.
+
+Before installation, review [`COMPATIBILITY.md`](COMPATIBILITY.md) for model access, platform, and runtime requirements. The package validates configuration syntax locally, but it cannot grant access to a model that is unavailable in the user's Codex workspace.
 
 ## Usage
 
@@ -68,6 +76,8 @@ See [`agents/_manuel/README.md`](agents/_manuel/README.md) and [`agents/_invest/
 - [`CONTRIBUTING.md`](CONTRIBUTING.md): validation, change, and release policy.
 - [`SECURITY.md`](SECURITY.md): private security and privacy reporting.
 - [`CHANGELOG.md`](CHANGELOG.md): repository-wide change history.
+- [`COMPATIBILITY.md`](COMPATIBILITY.md): supported runtime assumptions and portability notes.
+- [`RELEASING.md`](RELEASING.md): maintainer release checklist.
 - [`AGENTS.md`](AGENTS.md): constraints for automated repository maintenance.
 
 ## Source and copyright note
