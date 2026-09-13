@@ -7,7 +7,8 @@ This package contains Codex custom-agent configuration and supporting files. Loc
 - Codex must support custom agents with `model`, `model_reasoning_effort`, and `sandbox_mode` configuration fields.
 - `_factbot` and `_manuel` request `gpt-5.6-terra`; `_invest` and `_mantou` request `gpt-5.6-sol`. Installation does not grant access to either model.
 - PowerShell is required for installation and the repository validation entry points.
-- Python 3.11 or later is required for static validators and unit tests.
+- Python 3.11 or later is required for static validators and unit tests. The
+  repository validator accepts either `python` or the Windows `py` launcher.
 - `_mantou` requires a Windows interactive session with `Set-Clipboard` and `Get-Clipboard` available.
 - `_invest` can optionally route approved writes to Obsidian. Its local vault path is supplied outside the public package.
 

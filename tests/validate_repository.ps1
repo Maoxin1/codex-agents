@@ -6,6 +6,16 @@ $packageRoot = Split-Path -Parent $PSScriptRoot
 Push-Location $packageRoot
 
 try {
+    $pythonCommand = Get-Command 'python' -ErrorAction SilentlyContinue
+    $pythonArguments = @()
+    if ($null -eq $pythonCommand) {
+        $pythonCommand = Get-Command 'py' -ErrorAction SilentlyContinue
+        $pythonArguments = @('-3')
+    }
+    if ($null -eq $pythonCommand) {
+        throw "Python 3.11 or later is required. Install Python and expose either 'python' or the Windows 'py' launcher."
+    }
+
     & (Join-Path $PSScriptRoot 'validate_install.ps1')
 
     $env:PYTHONIOENCODING = 'utf-8'
@@ -18,9 +28,9 @@ try {
         @('agents/_manuel/tests/validate_manuel.py')
     )
     foreach ($arguments in $pythonChecks) {
-        & python @arguments
+        & $pythonCommand.Source @pythonArguments @arguments
         if ($LASTEXITCODE) {
-            throw "Python validation failed: python $($arguments -join ' ')"
+            throw "Python validation failed: $($pythonCommand.Name) $($pythonArguments + $arguments -join ' ')"
         }
     }
 

@@ -6,6 +6,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+### Fixed
+
+- Let the Windows repository validator fall back to the standard `py` launcher
+  when `python` is not available on `PATH`.
+
 ## [0.1.0] - 2026-08-30
 
 ### Added
