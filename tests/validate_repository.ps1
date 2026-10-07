@@ -1,5 +1,7 @@
 [CmdletBinding()]
-param()
+param(
+    [switch]$AllowModelOverride
+)
 
 $ErrorActionPreference = 'Stop'
 $packageRoot = Split-Path -Parent $PSScriptRoot
@@ -21,6 +23,7 @@ try {
     $env:PYTHONIOENCODING = 'utf-8'
     $pythonChecks = @(
         @('tests/validate_content.py'),
+        @('-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py'),
         @('agents/_factbot/tests/validate_factbot.py'),
         @('-m', 'unittest', 'discover', '-s', 'agents/_invest/tests', '-p', 'test_*.py'),
         @('agents/_invest/tests/validate_invest.py'),
@@ -28,6 +31,9 @@ try {
         @('agents/_manuel/tests/validate_manuel.py')
     )
     foreach ($arguments in $pythonChecks) {
+        if ($AllowModelOverride -and $arguments[0] -like 'agents/*/tests/validate_*.py') {
+            $arguments += '--allow-model-override'
+        }
         & $pythonCommand.Source @pythonArguments @arguments
         if ($LASTEXITCODE) {
             throw "Python validation failed: $($pythonCommand.Name) $($pythonArguments + $arguments -join ' ')"

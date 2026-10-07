@@ -13,7 +13,12 @@ Contributions should keep each agent portable, reviewable, and safe to publish.
 ./tests/validate_repository.ps1
 ```
 
-The repository validator runs the installer regression, all four agent validators, `_invest` unit tests, PowerShell parsing, and TOML parsing. Individual validators may be run while developing a focused change.
+The repository validator runs the installer regression, all four agent validators,
+local-model-override regressions, `_invest` unit tests, PowerShell parsing, and TOML
+parsing. Individual validators may be run while developing a focused change.
+Keep the default strict mode for contributions and releases. The explicit local
+override mode described in [COMPATIBILITY.md](COMPATIBILITY.md) does not qualify
+changed model defaults for publication.
 
 Behavior evaluation can require a configured Codex environment and is not part of the default CI. Follow the relevant agent's test README and state what was run in the pull request.
 

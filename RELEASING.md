@@ -6,7 +6,7 @@ Releases use Semantic Versioning and copy their user-visible notes from `CHANGEL
 
 1. Confirm the intended version and move relevant entries from `Unreleased` to a dated version section.
 2. Review model identifiers and the assumptions in `COMPATIBILITY.md` against current official Codex documentation.
-3. Run `./tests/validate_repository.ps1` from a clean checkout.
+3. Run `./tests/validate_repository.ps1` from a clean checkout without `-AllowModelOverride`; release defaults must pass strict validation.
 4. Confirm the `Validate` workflow succeeds on the exact release commit.
 5. Create a signed or annotated `vMAJOR.MINOR.PATCH` tag.
 6. Create the GitHub Release from that tag, copy the changelog notes, and include any migration steps.

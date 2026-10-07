@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -12,19 +13,31 @@ CONFIG = ROOT.parent / "_mantou.toml"
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description="Validate the _mantou package.")
+    parser.add_argument(
+        "--allow-model-override",
+        action="store_true",
+        help="Allow a local model identifier; keep all other contract checks.",
+    )
+    args = parser.parse_args()
     errors: list[str] = []
     with CONFIG.open("rb") as handle:
         config = tomllib.load(handle)
 
     expected = {
         "name": "_mantou",
-        "model": "gpt-5.6-sol",
         "model_reasoning_effort": "high",
         "sandbox_mode": "read-only",
     }
     for field, value in expected.items():
         if config.get(field) != value:
             errors.append(f"{field} 不是预期值：{value}")
+
+    model = config.get("model")
+    if not isinstance(model, str) or not model or any(character.isspace() for character in model):
+        errors.append("model 必须是非空且不含空白的字符串")
+    elif not args.allow_model_override and model != "gpt-5.6-sol":
+        errors.append("默认模型不是 gpt-5.6-sol")
 
     instructions = config.get("developer_instructions", "")
     required_terms = [

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
@@ -32,6 +33,13 @@ def fail(errors: list[str], message: str) -> None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description="Validate the _manuel package.")
+    parser.add_argument(
+        "--allow-model-override",
+        action="store_true",
+        help="Allow a local model identifier; keep all other contract checks.",
+    )
+    args = parser.parse_args()
     errors: list[str] = []
     checks: list[str] = []
 
@@ -41,8 +49,13 @@ def main() -> int:
         fail(errors, "配置 name 不是 _manuel")
     if config.get("sandbox_mode") != "read-only":
         fail(errors, "sandbox_mode 不是 read-only")
-    if config.get("model") != "gpt-5.6-terra" or config.get("model_reasoning_effort") != "medium":
-        fail(errors, "默认模型/推理档位不是已评测目标 terra/medium")
+    model = config.get("model")
+    if not isinstance(model, str) or not model or any(character.isspace() for character in model):
+        fail(errors, "model 必须是非空且不含空白的字符串")
+    elif not args.allow_model_override and model != "gpt-5.6-terra":
+        fail(errors, "默认模型不是已评测目标 terra")
+    if config.get("model_reasoning_effort") != "medium":
+        fail(errors, "推理档位不是已评测目标 medium")
     instructions = config.get("developer_instructions", "")
     if re.search(r"[A-Za-z]:[/\\]Users[/\\]", instructions):
         fail(errors, "运行时说明含硬编码用户绝对路径")

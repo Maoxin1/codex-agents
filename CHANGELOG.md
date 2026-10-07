@@ -6,6 +6,14 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+### Fixed
+
+- Make the documented local model-override path usable with explicit
+  `-AllowModelOverride` / `--allow-model-override` validation options. Default
+  release and CI checks remain strict; all non-model checks remain enabled.
+- Add offline regression coverage for accepted local model identifiers and
+  preserved reasoning, read-only, agent-boundary, and privacy checks.
+
 ## [0.1.1] - 2026-09-14
 
 ### Fixed
