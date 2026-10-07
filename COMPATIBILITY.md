@@ -14,7 +14,32 @@ This package contains Codex custom-agent configuration and supporting files. Loc
 
 ## Portability
 
-If a configured model is unavailable, choose an accessible model with equivalent tool and reasoning support, update the relevant TOML file, and run `./tests/validate_repository.ps1` before installation. Treat that change as a local compatibility override unless the repository's supported defaults are intentionally being changed.
+If a configured model is unavailable, choose an accessible model that supports the
+agent's existing tools and reasoning setting, then change only `model` in the
+relevant `agents/<name>.toml` file. Validate that local copy explicitly:
+
+```powershell
+./tests/validate_repository.ps1 -AllowModelOverride
+```
+
+Each individual agent validator also accepts `--allow-model-override`, for example:
+
+```powershell
+python agents/_factbot/tests/validate_factbot.py --allow-model-override
+```
+
+This mode relaxes only the exact default model identifier. The identifier must
+still be a non-empty string without whitespace; reasoning settings, agent
+boundaries, privacy checks, and all other validations remain unchanged. It does
+not verify model availability, feature support, or output quality. After validation,
+install the local copy, restart Codex, and run a non-sensitive smoke test before
+relying on the substituted model. Standalone invocation scripts with a `-Model`
+parameter need that override passed explicitly as well.
+
+Keep local overrides out of published defaults. Running the validator without
+the switch, including in CI and before a release, still rejects changed default
+model identifiers. A later installation with `-Force` replaces managed TOML
+files, so review and reapply intentional model overrides when upgrading.
 
 The default CI exercises Windows with Python 3.11 and 3.13. It does not call paid model services or perform live behavioral evaluation.
 
@@ -24,6 +49,6 @@ Before upgrading Codex or this package:
 
 1. run `./install.ps1 -Force -WhatIf` to preview managed targets;
 2. review the changelog and agent-specific behavior changes;
-3. run `./tests/validate_repository.ps1`;
+3. run `./tests/validate_repository.ps1` (add `-AllowModelOverride` only for an intentional local model override);
 4. install with `-Force`, then restart Codex;
 5. exercise each agent with a non-sensitive smoke test before relying on it for substantive work.

@@ -17,6 +17,11 @@ PRIVATE_RUNTIME_FILES = {"knowledge-map.local.md"}
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Validate the portable _invest package.")
     parser.add_argument(
+        "--allow-model-override",
+        action="store_true",
+        help="Allow a local model identifier; keep all other contract checks.",
+    )
+    parser.add_argument(
         "--vault",
         type=Path,
         help="Optional Obsidian vault to validate. Defaults to INVEST_VAULT_PATH when set.",
@@ -50,7 +55,10 @@ def main() -> int:
                 errors.append(f"TOML 缺少必填字段：{field}")
         if config.get("name") != "_invest":
             errors.append("配置 name 不是 _invest")
-        if config.get("model") != "gpt-5.6-sol":
+        model = config.get("model")
+        if not isinstance(model, str) or not model or any(character.isspace() for character in model):
+            errors.append("model 必须是非空且不含空白的字符串")
+        elif not args.allow_model_override and model != "gpt-5.6-sol":
             errors.append("默认模型不是 gpt-5.6-sol")
         if config.get("model_reasoning_effort") != "high":
             errors.append("默认推理档位不是 high")
