@@ -8,6 +8,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Added
 
+- `_wayne` research-advisor pilot: nine source-checked principles, all 18 chapter
+  locations, private fingerprinted EPUB access, offline regressions, and pending
+  semantic behavior cases. Inherits the caller model; original book is not distributed.
+- Selective installation with `-Agent`, preserving private local source configuration.
+- Targeted semantic review cases for existing agents; no runtime changes or measured gains claimed.
+
 - Five-book advisor design with explicit available/planned status, single-book
   source boundaries, learning behavior, staged collaboration, and acceptance criteria.
 - Design review of `_mantou`, `_factbot`, and `_invest`, distinguishing existing

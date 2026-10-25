@@ -6,6 +6,7 @@ This package contains Codex custom-agent configuration and supporting files. Loc
 
 - Codex must support custom agents with `model`, `model_reasoning_effort`, and `sandbox_mode` configuration fields.
 - `_factbot` and `_manuel` request `gpt-5.6-terra`; `_invest` and `_mantou` request `gpt-5.6-sol`. Installation does not grant access to either model.
+- `_wayne` is a pilot that omits model and reasoning overrides, inheriting the caller's settings. Its local source reader needs Python 3.11+; no third-party Python packages are required. Custom-agent instructions alone do not enforce a sandbox: actual permissions are controlled by the parent runtime.
 - PowerShell is required for installation and the repository validation entry points.
 - Python 3.11 or later is required for static validators and unit tests. The
   repository validator accepts either `python` or the Windows `py` launcher.
