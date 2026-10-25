@@ -50,6 +50,15 @@ try {
     Assert-ManagedFilesMatch $cleanRoot
     Assert-True ((Get-Content -Raw -LiteralPath $overlay).Trim() -eq 'private-local-overlay') 'Force update changed the private overlay.'
     Assert-True ((Get-Content -Raw -LiteralPath $wayneOverlay).Trim() -eq '{"epub":"private-placeholder"}') 'Force update changed the local book configuration.'
+    foreach ($advisor in @('_clayton', '_alan', '_jim')) {
+        $localSource = Join-Path $cleanRoot "agents/$advisor/source.local.json"
+        Set-Content -LiteralPath $localSource -Value '{"epub":"private-book-placeholder"}' -Encoding utf8
+    }
+    & $installer -Agent _clayton,_alan,_jim -Force
+    foreach ($advisor in @('_clayton', '_alan', '_jim')) {
+        $localSource = Join-Path $cleanRoot "agents/$advisor/source.local.json"
+        Assert-True ((Get-Content -Raw -LiteralPath $localSource).Trim() -eq '{"epub":"private-book-placeholder"}') "Update changed private source for $advisor"
+    }
     Assert-True (-not (Test-Path -LiteralPath (Join-Path $cleanRoot 'agents/_invest/_invest'))) 'Force update created nested _invest/_invest.'
     Assert-True (-not (Test-Path -LiteralPath (Join-Path $cleanRoot 'agents/_manuel/_manuel'))) 'Force update created nested _manuel/_manuel.'
 
@@ -88,6 +97,13 @@ try {
     Set-Content -LiteralPath $sentinel -Value 'preserve-other-agent' -Encoding utf8
     & $installer -Agent _wayne -Force
     Assert-True ((Get-Content -Raw -LiteralPath $sentinel).Trim() -eq 'preserve-other-agent') 'Selective update changed an unselected agent.'
+
+    $singleBookRoot = Join-Path $testRoot 'single-book'
+    $env:CODEX_HOME = $singleBookRoot
+    & $installer -Agent _jim
+    Assert-True (Test-Path -LiteralPath (Join-Path $singleBookRoot 'agents/_book_sources/epub.py')) 'Book advisor install omitted its shared reader.'
+    Assert-True (Test-Path -LiteralPath (Join-Path $singleBookRoot 'agents/_jim/source.py')) 'Book advisor install omitted its entry point.'
+    Assert-True (-not (Test-Path -LiteralPath (Join-Path $singleBookRoot 'agents/_alan.toml'))) 'Single book install included another advisor.'
 
     Write-Host 'INSTALL VALIDATION PASSED'
     Write-Host '- clean installation matches all packaged files'

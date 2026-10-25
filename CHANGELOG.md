@@ -8,6 +8,16 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Added
 
+- `_clayton`, `_alan`, and `_jim` book-advisor pilots with 28 source-grounded
+  principle summaries, explicit edition/provenance limitations, private EPUB
+  setup and 27 pending semantic behavior cases. Each inherits the caller model.
+- A shared source reader that supports HTML entities and exact heading locators
+  scoped to the selected chapter, including single-document multi-chapter EPUBs.
+- Selective installation of the three pilots with their shared reader and
+  preservation of each private source configuration.
+- Implementation rationale explaining the three entry points and their conceptual
+  differences without claiming measured behavior gains.
+
 - `_wayne` research-advisor pilot: nine source-checked principles, all 18 chapter
   locations, private fingerprinted EPUB access, offline regressions, and pending
   semantic behavior cases. Inherits the caller model; original book is not distributed.

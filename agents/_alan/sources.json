@@ -1,0 +1,256 @@
+{
+  "title": "When Coffee and Kale Compete",
+  "edition": "Second Edition (title page)",
+  "year": null,
+  "authors": [
+    "Alan Klement"
+  ],
+  "publisher": "NYC Press (OPF; not independently verified)",
+  "isbn": null,
+  "metadata_date": "2018-04-15 (OPF; not asserted as publication date)",
+  "sha256": "2a574b057480bd13f355fbf3bed69faff18dccfde9bcbe8a05afda0d72214c3b",
+  "format": "EPUB unpacked locally from AZW3",
+  "original_sha256": "595b922c0d8b7565fea4e95b1bf7310bfe5ce814954436abc237e4190b0d926f",
+  "extraction": {
+    "tool": "mobi 0.4.1 / KindleUnpack 0.82",
+    "documentation": "https://github.com/iscc/mobi",
+    "warning": "Unpacker reported a bad EXTH 406 key/size/value combination. Text and all 19 numbered-unit boundaries parsed successfully; full image/layout and publisher-file authenticity were not certified."
+  },
+  "coverage_note": "15 main chapters and numbered appendices 16–18 plus notes unit 19 indexed. Selected sections support nine original summaries; others indexed only. Text access does not reproduce all information in diagrams.",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "1 Challenges, Hope, and Progress",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:1 Challenges, Hope, and Progress",
+      "status": "indexed-only"
+    },
+    {
+      "number": 2,
+      "title": "2 What is Customer Jobs? What is a Job to be Done (JTBD)?",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:2 What is Customer Jobs? What is a Job to be Done (JTBD)?",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 3,
+      "title": "3 What Are the Principles of Customer Jobs?",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:3 What Are the Principles of Customer Jobs?",
+      "status": "indexed-only"
+    },
+    {
+      "number": 4,
+      "title": "4 Case Study: Dan and Clarity",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:4 Case Study: Dan and Clarity",
+      "status": "indexed-only"
+    },
+    {
+      "number": 5,
+      "title": "5 Case Study: Anthony and Form Theatricals",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:5 Case Study: Anthony and Form Theatricals",
+      "status": "indexed-only"
+    },
+    {
+      "number": 6,
+      "title": "6 Case Study: Morgan and YourGrocer",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:6 Case Study: Morgan and YourGrocer",
+      "status": "indexed-only"
+    },
+    {
+      "number": 7,
+      "title": "7 The Forces of Progress",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:7 The Forces of Progress",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 8,
+      "title": "8 When You Define Competition Wrong",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:8 When You Define Competition Wrong",
+      "status": "indexed-only"
+    },
+    {
+      "number": 9,
+      "title": "9 Case Study: Omer and Transcendent Endeavors",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:9 Case Study: Omer and Transcendent Endeavors",
+      "status": "indexed-only"
+    },
+    {
+      "number": 10,
+      "title": "10 Case Study: Justin and Product People Club",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:10 Case Study: Justin and Product People Club",
+      "status": "indexed-only"
+    },
+    {
+      "number": 11,
+      "title": "11 Case Study: Ash and Lean Stack",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:11 Case Study: Ash and Lean Stack",
+      "status": "indexed-only"
+    },
+    {
+      "number": 12,
+      "title": "12 The System of Progress",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:12 The System of Progress",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 13,
+      "title": "13 Innovation and the System of Progress",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:13 Innovation and the System of Progress",
+      "status": "indexed-only"
+    },
+    {
+      "number": 14,
+      "title": "14 How Might We Describe a Job to be Done?",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:14 How Might We Describe a Job to be Done?",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 15,
+      "title": "15 Get Started Today",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:15 Get Started Today",
+      "status": "indexed-only"
+    },
+    {
+      "number": 16,
+      "title": "16 Appendix: Know the Two — Very — Different Interpretations of Jobs to be Done",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:16 Appendix: Know the Two — Very — Different Interpretations of Jobs to be Done",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 17,
+      "title": "17 Appendix: A Summary of Customer Jobs",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:17 Appendix: A Summary of Customer Jobs",
+      "status": "indexed-only"
+    },
+    {
+      "number": 18,
+      "title": "18 Appendix: Summary of Putting Customer Jobs to Work",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:18 Appendix: Summary of Putting Customer Jobs to Work",
+      "status": "indexed-only"
+    },
+    {
+      "number": 19,
+      "title": "19 Notes",
+      "href": "OEBPS/Text/part0000.xhtml",
+      "anchor": "text:19 Notes",
+      "status": "indexed-only"
+    }
+  ],
+  "principles": [
+    {
+      "id": "A01",
+      "chapter": 2,
+      "reference": "references/progress.md",
+      "anchors": [
+        {
+          "id": "text:A Job to be Done Defined",
+          "heading": "A Job to be Done Defined"
+        }
+      ]
+    },
+    {
+      "id": "A02",
+      "chapter": 7,
+      "reference": "references/forces.md",
+      "anchors": [
+        {
+          "id": "text:Forces That Oppose Each Other",
+          "heading": "Forces That Oppose Each Other"
+        }
+      ]
+    },
+    {
+      "id": "A03",
+      "chapter": 7,
+      "reference": "references/forces.md",
+      "anchors": [
+        {
+          "id": "text:Unpacking Demand Generation",
+          "heading": "Unpacking Demand Generation"
+        }
+      ]
+    },
+    {
+      "id": "A04",
+      "chapter": 7,
+      "reference": "references/forces.md",
+      "anchors": [
+        {
+          "id": "text:Unpacking Demand Reduction",
+          "heading": "Unpacking Demand Reduction"
+        }
+      ]
+    },
+    {
+      "id": "A05",
+      "chapter": 7,
+      "reference": "references/forces.md",
+      "anchors": [
+        {
+          "id": "text:Unpacking Demand Reduction",
+          "heading": "Unpacking Demand Reduction"
+        }
+      ]
+    },
+    {
+      "id": "A06",
+      "chapter": 14,
+      "reference": "references/progress.md",
+      "anchors": [
+        {
+          "id": "text:Describing A JTBD",
+          "heading": "Describing A JTBD"
+        }
+      ]
+    },
+    {
+      "id": "A07",
+      "chapter": 14,
+      "reference": "references/progress.md",
+      "anchors": [
+        {
+          "id": "text:Describing A JTBD",
+          "heading": "Describing A JTBD"
+        }
+      ]
+    },
+    {
+      "id": "A08",
+      "chapter": 12,
+      "reference": "references/progress.md",
+      "anchors": [
+        {
+          "id": "text:The System of Progress Is Continuous",
+          "heading": "The System of Progress Is Continuous"
+        }
+      ]
+    },
+    {
+      "id": "A09",
+      "chapter": 16,
+      "reference": "references/progress.md",
+      "anchors": [
+        {
+          "id": "text:Two Different, Incompatible Models",
+          "heading": "Two Different, Incompatible Models"
+        }
+      ]
+    }
+  ]
+}

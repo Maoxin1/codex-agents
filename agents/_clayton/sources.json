@@ -1,0 +1,202 @@
+{
+  "title": "Competing Against Luck: The Story of Innovation and Customer Choice",
+  "edition": "First edition, digital edition September 2016 (copyright page)",
+  "year": 2016,
+  "authors": [
+    "Clayton M. Christensen",
+    "Taddy Hall",
+    "Karen Dillon",
+    "David S. Duncan"
+  ],
+  "publisher": "HarperCollins (copyright page)",
+  "isbn": "9780062435637",
+  "sha256": "7d9ac5cabf81f1666a29733e1f1ada0a6f1216c8324f5924f74ee8d34e7a8682",
+  "format": "EPUB",
+  "provenance_note": "Supplied EPUB has third-party-modified OPF author/publisher metadata and added advertising documents. Authors, edition and ISBN were checked against the body copyright/about-author pages. Indexed chapters exclude added documents. Fingerprint identifies this artifact, not authenticity or completeness of a publisher original.",
+  "coverage_note": "All ten numbered chapters indexed; selected sections supporting nine principles reviewed. Other passages require on-demand source reads.",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Chapter 1 The Milk Shake Dilemma",
+      "href": "EPUB/text00004.html",
+      "anchor": "@document",
+      "status": "indexed-only"
+    },
+    {
+      "number": 2,
+      "title": "Chapter 2 Progress, Not Products",
+      "href": "EPUB/text00005.html",
+      "anchor": "@document",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 3,
+      "title": "Chapter 3 Jobs in the Wild",
+      "href": "EPUB/text00006.html",
+      "anchor": "@document",
+      "status": "indexed-only"
+    },
+    {
+      "number": 4,
+      "title": "Chapter 4 Job Hunting",
+      "href": "EPUB/text00008.html",
+      "anchor": "@document",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 5,
+      "title": "Chapter 5 How to Hear What Your Customers Don’t Say",
+      "href": "EPUB/text00009.html",
+      "anchor": "@document",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 6,
+      "title": "Chapter 6 Building Your Résumé",
+      "href": "EPUB/text00010.html",
+      "anchor": "@document",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 7,
+      "title": "Chapter 7 Integrating Around a Job",
+      "href": "EPUB/text00012.html",
+      "anchor": "@document",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 8,
+      "title": "Chapter 8 Keeping Your Eye on the Job",
+      "href": "EPUB/text00013.html",
+      "anchor": "@document",
+      "status": "indexed-only"
+    },
+    {
+      "number": 9,
+      "title": "Chapter 9 The Jobs-Focused Organization",
+      "href": "EPUB/text00014.html",
+      "anchor": "@document",
+      "status": "indexed-only"
+    },
+    {
+      "number": 10,
+      "title": "Chapter 10 Final Observations About the Theory of Jobs",
+      "href": "EPUB/text00015.html",
+      "anchor": "@document",
+      "status": "selected-sections-reviewed"
+    }
+  ],
+  "principles": [
+    {
+      "id": "C01",
+      "chapter": 2,
+      "reference": "references/foundation.md",
+      "anchors": [
+        {
+          "id": "ah3-L4",
+          "heading": "Defining the Job"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "chapter": 2,
+      "reference": "references/foundation.md",
+      "anchors": [
+        {
+          "id": "bh3-L5",
+          "heading": "Functional, Social, and Emotional Complexity"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "chapter": 10,
+      "reference": "references/foundation.md",
+      "anchors": [
+        {
+          "id": "ah4-L4",
+          "heading": "The Boundaries of the Theory"
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "chapter": 2,
+      "reference": "references/foundation.md",
+      "anchors": [
+        {
+          "id": "ah7-L4",
+          "heading": "Shifting Competitive Landscape"
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "chapter": 4,
+      "reference": "references/discovery.md",
+      "anchors": [
+        {
+          "id": "ah2-L4",
+          "heading": "Where Are the Jobs?"
+        },
+        {
+          "id": "ah5-L4",
+          "heading": "3. Workarounds and Compensating Behaviors"
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "chapter": 5,
+      "reference": "references/discovery.md",
+      "anchors": [
+        {
+          "id": "ah2-L4",
+          "heading": "Building Customer Stories"
+        }
+      ]
+    },
+    {
+      "id": "C07",
+      "chapter": 6,
+      "reference": "references/delivery.md",
+      "anchors": [
+        {
+          "id": "ah2-L4",
+          "heading": "Decoding the Complexity"
+        },
+        {
+          "id": "ah4-L4",
+          "heading": "Removing the Obstacles"
+        }
+      ]
+    },
+    {
+      "id": "C08",
+      "chapter": 7,
+      "reference": "references/delivery.md",
+      "anchors": [
+        {
+          "id": "ah3-L4",
+          "heading": "Organizing around the Job"
+        },
+        {
+          "id": "ah4-L4",
+          "heading": "What Gets Measured Gets Done"
+        }
+      ]
+    },
+    {
+      "id": "C09",
+      "chapter": 2,
+      "reference": "references/foundation.md",
+      "anchors": [
+        {
+          "id": "ah8-L4",
+          "heading": "The Limits of Jobs Theory"
+        }
+      ]
+    }
+  ]
+}

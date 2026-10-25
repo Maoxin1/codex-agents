@@ -1,8 +1,8 @@
 [CmdletBinding(SupportsShouldProcess)]
 param(
     [switch]$Force,
-    [ValidateSet('_factbot', '_invest', '_mantou', '_manuel', '_wayne')]
-    [string[]]$Agent = @('_factbot', '_invest', '_mantou', '_manuel', '_wayne')
+    [ValidateSet('_factbot', '_invest', '_mantou', '_manuel', '_wayne', '_clayton', '_alan', '_jim')]
+    [string[]]$Agent = @('_factbot', '_invest', '_mantou', '_manuel', '_wayne', '_clayton', '_alan', '_jim')
 )
 
 $ErrorActionPreference = "Stop"
@@ -12,6 +12,9 @@ $codexRoot = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME ".c
 $targetRoot = Join-Path $codexRoot "agents"
 
 $items = @($Agent | Select-Object -Unique | ForEach-Object { "${_}.toml"; $_ })
+if (@($Agent | Where-Object { $_ -in @('_clayton', '_alan', '_jim') }).Count) {
+    $items += '_book_sources'
+}
 
 # Validate the complete operation before writing anything. This prevents a
 # collision discovered late in the list from leaving a partial installation.
