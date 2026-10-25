@@ -6,6 +6,14 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+### Added
+
+- Five-book advisor design with explicit available/planned status, single-book
+  source boundaries, learning behavior, staged collaboration, and acceptance criteria.
+- Design review of `_mantou`, `_factbot`, and `_invest`, distinguishing existing
+  capabilities from proposed improvements without changing their runtime contracts.
+- README roadmap linking both design documents and clarifying current installer coverage.
+
 ### Fixed
 
 - Make the documented local model-override path usable with explicit

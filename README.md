@@ -14,6 +14,32 @@ Four reusable custom agents for Codex:
 | `_mantou` | Prompt refinement | Clipboard only | [`agents/_mantou/README.md`](agents/_mantou/README.md) |
 | `_manuel` | Book-grounded critical-thinking guidance | Read-only | [`agents/_manuel/README.md`](agents/_manuel/README.md) |
 
+## Planned book advisors / 计划中的书籍顾问
+
+The five-advisor design supports learning while coding: get help with the current
+problem, understand the book concept behind the answer, and learn when to use it
+again. Each advisor is grounded in one specified book. Names are memorable
+handles, not claims to impersonate the authors.
+
+| Advisor | Book | Intended use | Status |
+| --- | --- | --- | --- |
+| `_manuel` | *Beyond Feelings*, 9th ed. | Examine claims, evidence, reasoning, and judgment | Available; learning and source-access improvements planned / 已有，增强计划中 |
+| `_wayne` | *The Craft of Research*, 5th ed. | Frame research questions, find evidence, and build arguments | Planned / 计划中 |
+| `_clayton` | *Competing Against Luck* | Understand the progress customers seek in specific circumstances | Planned / 计划中 |
+| `_alan` | *When Coffee and Kale Compete* | Examine alternatives, desired change, and switching barriers | Planned / 计划中 |
+| `_jim` | *The Jobs to Be Done Playbook* | Turn customer research into jobs, opportunities, and validation work | Planned / 计划中 |
+
+The installer currently provides only the four released agents listed above.
+The four new advisors have no runtime configurations or installation support yet.
+Design reviews may draw on all five books; runtime collaboration will be added
+in stages, starting with independent consultation and explicit user requests.
+
+- [Five-advisor design, usage examples, source boundaries, and acceptance criteria](docs/book-advisors-design.md)
+- [Design review of `_mantou`, `_factbot`, and `_invest`: existing strengths and proposed improvements](docs/existing-agent-design-review.md)
+
+These documents describe design proposals, not measured performance gains or
+newly enabled behavior in the existing agents.
+
 ## Requirements
 
 - A Codex installation that supports custom agent configuration.
