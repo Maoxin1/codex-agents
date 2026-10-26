@@ -8,6 +8,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Added
 
+- A short Chinese quick-start guide with all eight agent entry points, invocation
+  examples, optional joint consultation, and installation/source setup guidance.
 - `_clayton`, `_alan`, and `_jim` book-advisor pilots with 28 source-grounded
   principle summaries, explicit edition/provenance limitations, private EPUB
   setup and 27 pending semantic behavior cases. Each inherits the caller model.

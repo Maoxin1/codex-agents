@@ -109,6 +109,8 @@ Before installation, review [`COMPATIBILITY.md`](COMPATIBILITY.md) for model acc
 
 ## Usage
 
+中文入门见[简单使用指南](docs/quickstart.md)：如何选人、怎样提问、何时联合分析，以及安装和原书配置说明。
+
 Ask Codex to call the relevant agent:
 
 ```text
