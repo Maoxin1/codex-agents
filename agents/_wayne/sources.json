@@ -1,0 +1,275 @@
+{
+  "title": "The Craft of Research",
+  "edition": "Fifth Edition",
+  "year": 2024,
+  "authors": [
+    "Wayne C. Booth",
+    "Gregory G. Colomb",
+    "Joseph M. Williams",
+    "Joseph Bizup",
+    "William T. FitzGerald"
+  ],
+  "publisher": "University of Chicago Press",
+  "isbn": "9780226826660",
+  "sha256": "3ffcc5e4e27de838b540b0a9ad4b4b2dd4b79f373e8b02766716a2968cf8c7fb",
+  "format": "EPUB",
+  "extraction": "Python stdlib XML, NFC, soft-hyphen removal, block text; no reflow page numbers",
+  "coverage_note": "All 18 chapters indexed and structurally readable. Selected sections in chapters 1–9 reviewed for nine published principles; remaining content indexed only. No complete extracted book is distributed.",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "1 From Topics to Questions",
+      "href": "OEBPS/chi-booth-0012.xhtml",
+      "anchor": "ch01",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 2,
+      "title": "2 From Questions to a Problem",
+      "href": "OEBPS/chi-booth-0013.xhtml",
+      "anchor": "ch02",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 3,
+      "title": "3 Finding and Evaluating Sources",
+      "href": "OEBPS/chi-booth-0016.xhtml",
+      "anchor": "ch03",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 4,
+      "title": "4 Engaging Sources",
+      "href": "OEBPS/chi-booth-0017.xhtml",
+      "anchor": "ch04",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 5,
+      "title": "5 Making Good Arguments",
+      "href": "OEBPS/chi-booth-0020.xhtml",
+      "anchor": "ch05",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 6,
+      "title": "6 Making Claims",
+      "href": "OEBPS/chi-booth-0021.xhtml",
+      "anchor": "ch06",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 7,
+      "title": "7 Assembling Reasons and Evidence",
+      "href": "OEBPS/chi-booth-0022.xhtml",
+      "anchor": "ch07",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 8,
+      "title": "8 Warrants",
+      "href": "OEBPS/chi-booth-0023.xhtml",
+      "anchor": "ch08",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 9,
+      "title": "9 Acknowledgments and Responses",
+      "href": "OEBPS/chi-booth-0024.xhtml",
+      "anchor": "ch09",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 10,
+      "title": "10 Planning and Drafting",
+      "href": "OEBPS/chi-booth-0027.xhtml",
+      "anchor": "ch10",
+      "status": "indexed-only"
+    },
+    {
+      "number": 11,
+      "title": "11 Revising and Organizing",
+      "href": "OEBPS/chi-booth-0028.xhtml",
+      "anchor": "ch11",
+      "status": "indexed-only"
+    },
+    {
+      "number": 12,
+      "title": "12 Incorporating Sources",
+      "href": "OEBPS/chi-booth-0029.xhtml",
+      "anchor": "ch12",
+      "status": "indexed-only"
+    },
+    {
+      "number": 13,
+      "title": "13 Communicating Evidence Visually",
+      "href": "OEBPS/chi-booth-0030.xhtml",
+      "anchor": "ch13",
+      "status": "indexed-only"
+    },
+    {
+      "number": 14,
+      "title": "14 Introductions and Conclusions",
+      "href": "OEBPS/chi-booth-0031.xhtml",
+      "anchor": "ch14",
+      "status": "indexed-only"
+    },
+    {
+      "number": 15,
+      "title": "15 Revising Style",
+      "href": "OEBPS/chi-booth-0032.xhtml",
+      "anchor": "ch15",
+      "status": "indexed-only"
+    },
+    {
+      "number": 16,
+      "title": "16 Research Presentations",
+      "href": "OEBPS/chi-booth-0033.xhtml",
+      "anchor": "ch16",
+      "status": "indexed-only"
+    },
+    {
+      "number": 17,
+      "title": "17 The Ethics of Research",
+      "href": "OEBPS/chi-booth-0035.xhtml",
+      "anchor": "ch17",
+      "status": "indexed-only"
+    },
+    {
+      "number": 18,
+      "title": "18 Advice for Teachers",
+      "href": "OEBPS/chi-booth-0036.xhtml",
+      "anchor": "ch18",
+      "status": "indexed-only"
+    }
+  ],
+  "principles": [
+    {
+      "id": "W01",
+      "chapter": 1,
+      "reference": "references/questions.md",
+      "anchors": [
+        {
+          "id": "ah0103",
+          "heading": "1.3 The Most Significant Question: So What?"
+        }
+      ]
+    },
+    {
+      "id": "W02",
+      "chapter": 2,
+      "reference": "references/questions.md",
+      "anchors": [
+        {
+          "id": "ah0201",
+          "heading": "2.1 Understanding Research Problems"
+        },
+        {
+          "id": "ah0203",
+          "heading": "2.3 Connecting Research to Practical Consequences"
+        }
+      ]
+    },
+    {
+      "id": "W03",
+      "chapter": 3,
+      "reference": "references/sources.md",
+      "anchors": [
+        {
+          "id": "ah0301",
+          "heading": "3.1 Understanding Three Types of Sources"
+        },
+        {
+          "id": "ah0304",
+          "heading": "3.4 Evaluating Sources for Relevance and Reliability"
+        }
+      ]
+    },
+    {
+      "id": "W04",
+      "chapter": 4,
+      "reference": "references/sources.md",
+      "anchors": [
+        {
+          "id": "ah0406",
+          "heading": "4.6 Taking Notes Systematically"
+        }
+      ]
+    },
+    {
+      "id": "W05",
+      "chapter": 5,
+      "reference": "references/arguments.md",
+      "anchors": [
+        {
+          "id": "ah0502",
+          "heading": "5.2 Assembling the Core of Your Argument"
+        },
+        {
+          "id": "ah0503",
+          "heading": "5.3 Explaining Your Reasoning with Warrants"
+        }
+      ]
+    },
+    {
+      "id": "W06",
+      "chapter": 6,
+      "reference": "references/arguments.md",
+      "anchors": [
+        {
+          "id": "ah0603",
+          "heading": "6.3 Qualifying Claims to Enhance Your Credibility"
+        }
+      ]
+    },
+    {
+      "id": "W07",
+      "chapter": 7,
+      "reference": "references/arguments.md",
+      "anchors": [
+        {
+          "id": "ah0704",
+          "heading": "7.4 Distinguishing Evidence from Reports of It"
+        },
+        {
+          "id": "ah0705",
+          "heading": "7.5 Evaluating Your Evidence"
+        }
+      ]
+    },
+    {
+      "id": "W08",
+      "chapter": 8,
+      "reference": "references/arguments.md",
+      "anchors": [
+        {
+          "id": "ah0803",
+          "heading": "8.3 Testing Warrants"
+        },
+        {
+          "id": "ah0805",
+          "heading": "8.5 Using Warrants to Test Your Argument"
+        }
+      ]
+    },
+    {
+      "id": "W09",
+      "chapter": 9,
+      "reference": "references/arguments.md",
+      "anchors": [
+        {
+          "id": "ah0903",
+          "heading": "9.3 Imagining Alternatives to Your Argument"
+        },
+        {
+          "id": "ah0904",
+          "heading": "9.4 Deciding What to Acknowledge"
+        },
+        {
+          "id": "ah0905",
+          "heading": "9.5 Framing Your Responses as Sub-arguments"
+        }
+      ]
+    }
+  ]
+}

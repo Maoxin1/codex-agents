@@ -6,6 +6,32 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+### Added
+
+- A short Chinese quick-start guide with all eight agent entry points, invocation
+  examples, optional joint consultation, and installation/source setup guidance.
+- `_clayton`, `_alan`, and `_jim` book-advisor pilots with 28 source-grounded
+  principle summaries, explicit edition/provenance limitations, private EPUB
+  setup and 27 pending semantic behavior cases. Each inherits the caller model.
+- A shared source reader that supports HTML entities and exact heading locators
+  scoped to the selected chapter, including single-document multi-chapter EPUBs.
+- Selective installation of the three pilots with their shared reader and
+  preservation of each private source configuration.
+- Implementation rationale explaining the three entry points and their conceptual
+  differences without claiming measured behavior gains.
+
+- `_wayne` research-advisor pilot: nine source-checked principles, all 18 chapter
+  locations, private fingerprinted EPUB access, offline regressions, and pending
+  semantic behavior cases. Inherits the caller model; original book is not distributed.
+- Selective installation with `-Agent`, preserving private local source configuration.
+- Targeted semantic review cases for existing agents; no runtime changes or measured gains claimed.
+
+- Five-book advisor design with explicit available/planned status, single-book
+  source boundaries, learning behavior, staged collaboration, and acceptance criteria.
+- Design review of `_mantou`, `_factbot`, and `_invest`, distinguishing existing
+  capabilities from proposed improvements without changing their runtime contracts.
+- README roadmap linking both design documents and clarifying current installer coverage.
+
 ### Fixed
 
 - Make the documented local model-override path usable with explicit

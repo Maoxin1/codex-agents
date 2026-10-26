@@ -6,11 +6,14 @@ This package contains Codex custom-agent configuration and supporting files. Loc
 
 - Codex must support custom agents with `model`, `model_reasoning_effort`, and `sandbox_mode` configuration fields.
 - `_factbot` and `_manuel` request `gpt-5.6-terra`; `_invest` and `_mantou` request `gpt-5.6-sol`. Installation does not grant access to either model.
+- `_wayne`, `_clayton`, `_alan`, and `_jim` are pilots that omit model and reasoning overrides, inheriting the caller's settings. Their local source readers need Python 3.11+; no third-party Python packages are required. Custom-agent instructions alone do not enforce a sandbox: actual permissions are controlled by the parent runtime.
 - PowerShell is required for installation and the repository validation entry points.
 - Python 3.11 or later is required for static validators and unit tests. The
   repository validator accepts either `python` or the Windows `py` launcher.
 - `_mantou` requires a Windows interactive session with `Set-Clipboard` and `Get-Clipboard` available.
 - `_invest` can optionally route approved writes to Obsidian. Its local vault path is supplied outside the public package.
+
+The three JTBD pilots depend on the sibling `_book_sources` directory, automatically installed with any of them. Their private `source.local.json` files are preserved across updates. `_alan` reads a locally unpacked EPUB rather than AZW3 directly; unpacking is a maintenance setup step and is not performed by the running advisor.
 
 ## Portability
 
@@ -22,7 +25,7 @@ relevant `agents/<name>.toml` file. Validate that local copy explicitly:
 ./tests/validate_repository.ps1 -AllowModelOverride
 ```
 
-Each individual agent validator also accepts `--allow-model-override`, for example:
+Each established agent validator also accepts `--allow-model-override`, for example:
 
 ```powershell
 python agents/_factbot/tests/validate_factbot.py --allow-model-override

@@ -1,6 +1,8 @@
 [CmdletBinding(SupportsShouldProcess)]
 param(
-    [switch]$Force
+    [switch]$Force,
+    [ValidateSet('_factbot', '_invest', '_mantou', '_manuel', '_wayne', '_clayton', '_alan', '_jim')]
+    [string[]]$Agent = @('_factbot', '_invest', '_mantou', '_manuel', '_wayne', '_clayton', '_alan', '_jim')
 )
 
 $ErrorActionPreference = "Stop"
@@ -9,16 +11,10 @@ $sourceRoot = Join-Path $packageRoot "agents"
 $codexRoot = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME ".codex" }
 $targetRoot = Join-Path $codexRoot "agents"
 
-$items = @(
-    "_factbot.toml",
-    "_factbot",
-    "_invest.toml",
-    "_invest",
-    "_mantou.toml",
-    "_mantou",
-    "_manuel.toml",
-    "_manuel"
-)
+$items = @($Agent | Select-Object -Unique | ForEach-Object { "${_}.toml"; $_ })
+if (@($Agent | Where-Object { $_ -in @('_clayton', '_alan', '_jim') }).Count) {
+    $items += '_book_sources'
+}
 
 # Validate the complete operation before writing anything. This prevents a
 # collision discovered late in the list from leaving a partial installation.
@@ -49,7 +45,10 @@ foreach ($item in $items) {
         $sourceFiles = @(Get-Item -LiteralPath $source -Force)
     }
     else {
-        $sourceFiles = @(Get-ChildItem -LiteralPath $source -File -Recurse -Force)
+        $sourceFiles = @(Get-ChildItem -LiteralPath $source -File -Recurse -Force | Where-Object {
+            $_.Name -ne 'source.local.json' -and $_.Extension -ne '.pyc' -and
+            $_.FullName -notmatch '[/\\]__pycache__[/\\]'
+        })
     }
     foreach ($sourceFile in $sourceFiles) {
         $relativePath = $sourceFile.FullName.Substring($sourceRoot.Length).TrimStart('\', '/')
@@ -60,5 +59,5 @@ foreach ($item in $items) {
     }
 }
 
-Write-Host "Installed _factbot, _invest, _mantou, and _manuel to $targetRoot"
+Write-Host "Installed $($Agent -join ', ') to $targetRoot"
 Write-Host "Restart Codex to reload custom agents."

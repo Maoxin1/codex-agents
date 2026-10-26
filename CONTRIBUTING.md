@@ -13,7 +13,7 @@ Contributions should keep each agent portable, reviewable, and safe to publish.
 ./tests/validate_repository.ps1
 ```
 
-The repository validator runs the installer regression, all four agent validators,
+The repository validator runs the installer regression, all four established agent validators, book-advisor offline source-reader and package tests,
 local-model-override regressions, `_invest` unit tests, PowerShell parsing, and TOML
 parsing. Individual validators may be run while developing a focused change.
 Keep the default strict mode for contributions and releases. The explicit local

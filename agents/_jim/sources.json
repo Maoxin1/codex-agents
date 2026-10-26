@@ -1,0 +1,188 @@
+{
+  "title": "The Jobs to Be Done Playbook",
+  "edition": "2020 copyright edition; numbered edition not stated on copyright page",
+  "year": 2020,
+  "authors": [
+    "Jim Kalbach"
+  ],
+  "publisher": "Two Waves Books, an imprint of Rosenfeld Media",
+  "isbn": "9781933820682",
+  "sha256": "2722d736b8f4b06a853d7b15652608c88ec532c6cdd2cfc1898e94f24f649fce",
+  "format": "EPUB",
+  "provenance_note": "Title, author, year, publisher and ISBN checked against body copyright page; no independently certified publisher-file provenance.",
+  "coverage_note": "All eight numbered chapters indexed. Selected passages supporting ten original summaries reviewed; other content requires on-demand reads. Text extraction is not full diagram/table layout verification.",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "CHAPTER1Understanding Jobs to Be Done",
+      "href": "OEBPS/xhtml/ch01.xhtml",
+      "anchor": "@document",
+      "status": "indexed-only"
+    },
+    {
+      "number": 2,
+      "title": "CHAPTER2Core Concepts of JTBD",
+      "href": "OEBPS/xhtml/ch02.xhtml",
+      "anchor": "@document",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 3,
+      "title": "CHAPTER3Discovering Value",
+      "href": "OEBPS/xhtml/ch03.xhtml",
+      "anchor": "@document",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 4,
+      "title": "CHAPTER4Defining Value",
+      "href": "OEBPS/xhtml/ch04.xhtml",
+      "anchor": "@document",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 5,
+      "title": "CHAPTER5Designing Value",
+      "href": "OEBPS/xhtml/ch05.xhtml",
+      "anchor": "@document",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 6,
+      "title": "CHAPTER6Delivering Value",
+      "href": "OEBPS/xhtml/ch06.xhtml",
+      "anchor": "@document",
+      "status": "selected-sections-reviewed"
+    },
+    {
+      "number": 7,
+      "title": "CHAPTER7(Re)Developing Value",
+      "href": "OEBPS/xhtml/ch07.xhtml",
+      "anchor": "@document",
+      "status": "indexed-only"
+    },
+    {
+      "number": 8,
+      "title": "CHAPTER8JTBD in Action",
+      "href": "OEBPS/xhtml/ch08.xhtml",
+      "anchor": "@document",
+      "status": "selected-sections-reviewed"
+    }
+  ],
+  "principles": [
+    {
+      "id": "J01",
+      "chapter": 2,
+      "reference": "references/research.md",
+      "anchors": [
+        {
+          "id": "text:Putting It All Together: Scope the JTBD Domain",
+          "heading": "Putting It All Together: Scope the JTBD Domain"
+        }
+      ]
+    },
+    {
+      "id": "J02",
+      "chapter": 3,
+      "reference": "references/research.md",
+      "anchors": [
+        {
+          "id": "text:PLAY Conduct Jobs Interviews",
+          "heading": "PLAY Conduct Jobs Interviews"
+        },
+        {
+          "id": "text:Analyze the Data",
+          "heading": "Analyze the Data"
+        }
+      ]
+    },
+    {
+      "id": "J03",
+      "chapter": 3,
+      "reference": "references/research.md",
+      "anchors": [
+        {
+          "id": "text:PLAY Run Switch Interviews",
+          "heading": "PLAY Run Switch Interviews"
+        }
+      ]
+    },
+    {
+      "id": "J04",
+      "chapter": 3,
+      "reference": "references/research.md",
+      "anchors": [
+        {
+          "id": "text:PLAY Map the Main Job",
+          "heading": "PLAY Map the Main Job"
+        }
+      ]
+    },
+    {
+      "id": "J05",
+      "chapter": 4,
+      "reference": "references/decisions.md",
+      "anchors": [
+        {
+          "id": "text:PLAY Find Underserved Needs",
+          "heading": "PLAY Find Underserved Needs"
+        }
+      ]
+    },
+    {
+      "id": "J06",
+      "chapter": 4,
+      "reference": "references/decisions.md",
+      "anchors": [
+        {
+          "id": "text:PLAY Compare Competing Solutions",
+          "heading": "PLAY Compare Competing Solutions"
+        }
+      ]
+    },
+    {
+      "id": "J07",
+      "chapter": 5,
+      "reference": "references/delivery.md",
+      "anchors": [
+        {
+          "id": "text:PLAY Align Teams to Job Stories",
+          "heading": "PLAY Align Teams to Job Stories"
+        }
+      ]
+    },
+    {
+      "id": "J08",
+      "chapter": 5,
+      "reference": "references/delivery.md",
+      "anchors": [
+        {
+          "id": "text:PLAY Test Hypotheses with JTBD",
+          "heading": "PLAY Test Hypotheses with JTBD"
+        }
+      ]
+    },
+    {
+      "id": "J09",
+      "chapter": 6,
+      "reference": "references/delivery.md",
+      "anchors": [
+        {
+          "id": "text:PLAY Onboard Customers Successfully",
+          "heading": "PLAY Onboard Customers Successfully"
+        }
+      ]
+    },
+    {
+      "id": "J10",
+      "chapter": 8,
+      "reference": "references/delivery.md",
+      "anchors": [
+        {
+          "id": "text:JTBD Recipes",
+          "heading": "JTBD Recipes"
+        }
+      ]
+    }
+  ]
+}
