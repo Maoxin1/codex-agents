@@ -71,7 +71,7 @@
 - 安装、原书读取和本地回归检查已通过；维护者本地重新核验了四本原书的 48 个原则锚点。
 - 其他顾问的原生行为、正常剪贴板复制、复杂原文问题和跨书协作仍按需验证。
 
-记录见[评估方案](docs/evaluation-plan.md)、[首轮结果](docs/evaluation-results-2026-10-27.md)及[读取通路验证](docs/source-access-verification-2026-10-27.md)。
+记录见[验证状态表](docs/verification-status.md)、[评估方案](docs/evaluation-plan.md)、[首轮结果](docs/evaluation-results-2026-10-27.md)及[读取通路验证](docs/source-access-verification-2026-10-27.md)。
 
 ## 项目资料
 

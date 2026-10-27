@@ -8,6 +8,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Added
 
+- 新增八位 agent 的验证状态表，汇总现有证据与尚待验证的行为。
+
 - 将仓库首页与兼容性说明改为中文为主，扩充中文使用手册，覆盖八位 agent 的选择、调用示例、联合咨询、原书配置、更新与排错；同步修正旧的发布和评估状态说明。
 
 - A short Chinese quick-start guide with all eight agent entry points, invocation
