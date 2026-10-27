@@ -24,11 +24,13 @@ def tag(element: ET.Element) -> str:
     return element.tag.rsplit("}", 1)[-1]
 
 
-def block_text(node: ET.Element, block_tags: set[str]) -> list[str]:
+def block_text(node: ET.Element, block_tags: set[str], allowed: set[ET.Element]) -> list[str]:
     """Keep mixed text in document order, separating nested block boundaries."""
     def render(element: ET.Element) -> str:
         parts = [element.text or ""]
         for child in element:
+            if child not in allowed:
+                break
             boundary = "\n\n" if tag(child) in block_tags else ""
             parts.extend((boundary, render(child), boundary, child.tail or ""))
         return "".join(parts)
@@ -52,6 +54,11 @@ def section(xml: bytes, anchor: str) -> str:
         selected = list(nodes[start].iter())
     else:
         raise ValueError("Requested anchor must identify a heading or section")
+    if level:
+        end = next((i for i, node in enumerate(selected[1:], 1)
+                    if tag(node) in headings and int(tag(node)[1]) <= level), len(selected))
+        selected = selected[:end]
+    allowed = set(selected)
     blocks = []
     consumed = set()
     for i, node in enumerate(selected):
@@ -60,7 +67,7 @@ def section(xml: bytes, anchor: str) -> str:
             break
         block_tags = headings | {"p", "li", "td", "th", "blockquote", "figcaption"}
         if kind in block_tags and node not in consumed:
-            blocks.extend(block_text(node, block_tags))
+            blocks.extend(block_text(node, block_tags, allowed))
             consumed.update(node.iter())
     return "\n\n".join(blocks)
 

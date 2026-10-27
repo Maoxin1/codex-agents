@@ -43,6 +43,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
   when present in both the source checkout and destination.
 - Preserve mixed parent text and nested block text in both EPUB readers without
   duplication; cover nested lists, quotations, table cells, and inline formatting.
+- Keep nested block recursion inside the selected heading range so a following
+  chapter and its tail text cannot leak into the requested source section.
 - Label `_manuel` regex evaluation as a lexical smoke check and retain private
   answers, logs, package hashes, elapsed time, and failure records for review.
 - Add an opt-in paired coding evaluation runner and an initial 16-answer report

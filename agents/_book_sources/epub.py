@@ -27,11 +27,13 @@ def tag(node: ET.Element) -> str:
     return node.tag.rsplit("}", 1)[-1]
 
 
-def block_text(node: ET.Element, block_tags: set[str]) -> list[str]:
+def block_text(node: ET.Element, block_tags: set[str], allowed: set[ET.Element]) -> list[str]:
     """Keep mixed text in document order, separating nested block boundaries."""
     def render(element: ET.Element) -> str:
         parts = [element.text or ""]
         for child in element:
+            if child not in allowed:
+                break
             boundary = "\n\n" if tag(child) in block_tags else ""
             parts.extend((boundary, render(child), boundary, child.tail or ""))
         return "".join(parts)
@@ -76,12 +78,13 @@ def section(xml: bytes, anchor: str, within: str = "@document") -> str:
         raise ValueError("Anchor must identify a heading or content container")
 
     selected = select(select(nodes, within), anchor)
+    allowed = set(selected)
     blocks = []
     consumed = set()
     for node in selected:
         kind = tag(node)
         if kind in BLOCKS and node not in consumed:
-            blocks.extend(block_text(node, BLOCKS))
+            blocks.extend(block_text(node, BLOCKS, allowed))
             consumed.update(node.iter())
     value = "\n\n".join(blocks)
     if not value:
