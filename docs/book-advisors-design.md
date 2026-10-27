@@ -2,9 +2,9 @@
 
 状态：设计基线与实施进度。本文不是运行指令；实际行为以各 agent 包为准。
 
-目前仓库发布 `_mantou`、`_manuel`、`_factbot`、`_invest` 四位 agent。
-本文保留 `_manuel`，规划新增 `_wayne`、`_clayton`、`_alan`、`_jim`。
-`_wayne` 已实现试用包、9 条核验原则、全书目录索引、私有原文读取和安装支持，模型行为评估待运行。`_clayton`、`_alan`、`_jim` 也已完成试用包、选定原则核验、原文索引与安装，行为评估待运行；现有 `_manuel` 的学习体验与原文访问增强尚未实现。
+目前仓库提供八位 agent：`_mantou`、`_manuel`、`_factbot`、`_invest`，以及四位书籍顾问试用包 `_wayne`、`_clayton`、`_alan`、`_jim`。
+四位新顾问均已完成选定原则、原文索引与安装支持。首轮 16 份回答完成文本自评，但当时受到支持文件读取限制，不能证明书籍知识增益；后续已验证 `_wayne` 原生调用和修正后的 CLI 能读取支持文件。详见[评估结果](evaluation-results-2026-10-27.md)与[读取验证](source-access-verification-2026-10-27.md)。现有 `_manuel` 的学习体验与原文访问增强仍按计划逐步推进。
+日常使用先看[中文使用手册](quickstart.md)；下文说明设计目标，不把计划当成已实现功能。
 
 ## 1. 目标与成功标准
 
