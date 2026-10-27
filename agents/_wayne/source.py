@@ -24,6 +24,17 @@ def tag(element: ET.Element) -> str:
     return element.tag.rsplit("}", 1)[-1]
 
 
+def block_text(node: ET.Element, block_tags: set[str]) -> list[str]:
+    """Keep mixed text in document order, separating nested block boundaries."""
+    def render(element: ET.Element) -> str:
+        parts = [element.text or ""]
+        for child in element:
+            boundary = "\n\n" if tag(child) in block_tags else ""
+            parts.extend((boundary, render(child), boundary, child.tail or ""))
+        return "".join(parts)
+    return [value for part in render(node).split("\n\n") if (value := normalize(part))]
+
+
 def section(xml: bytes, anchor: str) -> str:
     if len(xml) > MAX_MEMBER_BYTES or b"<!DOCTYPE" in xml.upper() or b"<!ENTITY" in xml.upper():
         raise ValueError("Oversized or entity-bearing source document")
@@ -42,17 +53,15 @@ def section(xml: bytes, anchor: str) -> str:
     else:
         raise ValueError("Requested anchor must identify a heading or section")
     blocks = []
+    consumed = set()
     for i, node in enumerate(selected):
         kind = tag(node)
         if i and level and kind in headings and int(kind[1]) <= level:
             break
-        if kind in {"h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "td", "th"}:
-            # Containers with nested blocks are handled by those child blocks.
-            if any(tag(child) in {"p", "li", "td", "th"} for child in list(node.iter())[1:]):
-                continue
-            value = normalize("".join(node.itertext()))
-            if value:
-                blocks.append(value)
+        block_tags = headings | {"p", "li", "td", "th", "blockquote", "figcaption"}
+        if kind in block_tags and node not in consumed:
+            blocks.extend(block_text(node, block_tags))
+            consumed.update(node.iter())
     return "\n\n".join(blocks)
 
 

@@ -22,10 +22,9 @@ function Assert-ManagedFilesMatch {
     param([string]$CodexRoot)
 
     $targetRoot = Join-Path $CodexRoot 'agents'
-    foreach ($sourceFile in Get-ChildItem -LiteralPath $sourceRoot -File -Recurse -Force) {
-        if ($sourceFile.Name -eq 'source.local.json' -or $sourceFile.Extension -eq '.pyc' -or
-            $sourceFile.FullName -match '[/\\]__pycache__[/\\]') { continue }
-        $relativePath = $sourceFile.FullName.Substring($sourceRoot.Length).TrimStart('\', '/')
+    foreach ($entry in (Get-Content -Raw -LiteralPath (Join-Path $packageRoot 'managed-files.json') | ConvertFrom-Json)) {
+        $sourceFile = Get-Item -LiteralPath (Join-Path $packageRoot $entry)
+        $relativePath = $entry.Substring('agents/'.Length)
         $targetFile = Join-Path $targetRoot $relativePath
         Assert-True (Test-Path -LiteralPath $targetFile -PathType Leaf) "Missing installed file: $relativePath"
         $sourceHash = (Get-FileHash -LiteralPath $sourceFile.FullName -Algorithm SHA256).Hash
@@ -104,6 +103,35 @@ try {
     Assert-True (Test-Path -LiteralPath (Join-Path $singleBookRoot 'agents/_book_sources/epub.py')) 'Book advisor install omitted its shared reader.'
     Assert-True (Test-Path -LiteralPath (Join-Path $singleBookRoot 'agents/_jim/source.py')) 'Book advisor install omitted its entry point.'
     Assert-True (-not (Test-Path -LiteralPath (Join-Path $singleBookRoot 'agents/_alan.toml'))) 'Single book install included another advisor.'
+
+    # An ignored overlay in the source checkout must never become managed.
+    $fixturePackage = Join-Path $testRoot 'fixture-package'
+    $fixtureInvest = Join-Path $fixturePackage 'agents/_invest'
+    New-Item -ItemType Directory -Path $fixtureInvest -Force | Out-Null
+    Copy-Item -LiteralPath $installer -Destination (Join-Path $fixturePackage 'install.ps1')
+    Set-Content -LiteralPath (Join-Path $fixturePackage 'managed-files.json') -Value '["agents/_invest.toml", "agents/_invest/core.md"]'
+    Set-Content -LiteralPath (Join-Path $fixturePackage 'agents/_invest.toml') -Value '# fixture'
+    Set-Content -LiteralPath (Join-Path $fixtureInvest 'core.md') -Value 'managed-core'
+    Set-Content -LiteralPath (Join-Path $fixtureInvest 'knowledge-map.local.md') -Value 'source-private'
+    Set-Content -LiteralPath (Join-Path $fixtureInvest 'private-note.md') -Value 'source-note'
+    $env:CODEX_HOME = $cleanRoot
+    & (Join-Path $fixturePackage 'install.ps1') -Agent _invest -Force
+    Assert-True ((Get-Content -Raw -LiteralPath $overlay).Trim() -eq 'private-local-overlay') 'Source overlay overwrote destination overlay.'
+    Assert-True (-not (Test-Path -LiteralPath (Join-Path $cleanRoot 'agents/_invest/private-note.md'))) 'Unmanaged source note was installed.'
+    $env:CODEX_HOME = Join-Path $testRoot 'fixture-clean'
+    & (Join-Path $fixturePackage 'install.ps1') -Agent _invest
+    Assert-True (-not (Test-Path -LiteralPath (Join-Path $env:CODEX_HOME 'agents/_invest/knowledge-map.local.md'))) 'Source overlay leaked into clean installation.'
+
+    # A missing managed source must fail before replacing any destination files.
+    Set-Content -LiteralPath (Join-Path $fixturePackage 'agents/_invest.toml') -Value '# changed fixture'
+    Remove-Item -LiteralPath (Join-Path $fixtureInvest 'core.md')
+    $env:CODEX_HOME = $cleanRoot
+    $beforeMissing = (Get-FileHash -LiteralPath (Join-Path $cleanRoot 'agents/_invest.toml')).Hash
+    $failedAsExpected = $false
+    try { & (Join-Path $fixturePackage 'install.ps1') -Agent _invest -Force }
+    catch { $failedAsExpected = $true }
+    Assert-True $failedAsExpected 'Missing managed source unexpectedly installed.'
+    Assert-True ((Get-FileHash -LiteralPath (Join-Path $cleanRoot 'agents/_invest.toml')).Hash -eq $beforeMissing) 'Missing source left a partial update.'
 
     Write-Host 'INSTALL VALIDATION PASSED'
     Write-Host '- clean installation matches all packaged files'

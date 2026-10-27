@@ -47,7 +47,8 @@ def main() -> int:
         "Get-Clipboard -Raw",
         "single-quoted literal",
         "Invoke-Expression",
-        "CLIPBOARD_COPY_FAILED",
+        "return the complete refined prompt for manual copying",
+        "Regardless of clipboard success or failure",
         "return exactly the same refined prompt",
     ]
     for term in required_terms:
@@ -57,6 +58,8 @@ def main() -> int:
         errors.append("developer_instructions 含硬编码用户绝对路径")
     if instructions.count("retry once") != 1:
         errors.append("剪贴板失败重试契约不唯一或缺失")
+    if "CLIPBOARD_COPY_FAILED" in instructions:
+        errors.append("剪贴板失败不得用错误标记替代完整提示词")
 
     for relative in ["README.md", "CHANGELOG.md", "tests/cases.json"]:
         if not (ROOT / relative).is_file():

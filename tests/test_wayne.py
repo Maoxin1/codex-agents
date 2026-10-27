@@ -26,6 +26,12 @@ XML = b'''<html><body><section id="ch01"><h1>Chapter</h1>
 
 
 class WayneSourceTests(unittest.TestCase):
+    def test_mixed_nested_blocks_preserve_text_once_in_order(self):
+        xml = b'<html><body><section id="chapter"><ul><li>BEFORE<ul><li>INNER</li></ul>AFTER</li></ul><blockquote>QUOTE<p>BODY <em>inline</em></p>TAIL</blockquote><table><tr><td>CELL<p>DETAIL</p>END</td></tr></table></section></body></html>'
+        value = source.section(xml, "chapter")
+        expected = ["BEFORE", "INNER", "AFTER", "QUOTE", "BODY inline", "TAIL", "CELL", "DETAIL", "END"]
+        self.assertEqual(value.split("\n\n"), expected)
+
     def test_section_boundaries_and_nested_list_text(self):
         value = source.section(XML, "a")
         self.assertIn("A synthetic example.", value)

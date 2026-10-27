@@ -34,6 +34,21 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Fixed
 
+- Preserve the configured Windows sandbox backend in isolated eval sessions and
+  fail a model-free read preflight before spending model calls on unreadable
+  packages. Verify native `_wayne` and repaired CLI reads with matching file hashes.
+- Keep `_mantou`'s complete refined prompt available for manual copying when
+  clipboard access is unavailable or copying fails after its single retry.
+- Install only explicitly listed managed files, preserving private overlays even
+  when present in both the source checkout and destination.
+- Preserve mixed parent text and nested block text in both EPUB readers without
+  duplication; cover nested lists, quotations, table cells, and inline formatting.
+- Label `_manuel` regex evaluation as a lexical smoke check and retain private
+  answers, logs, package hashes, elapsed time, and failure records for review.
+- Add an opt-in paired coding evaluation runner and an initial 16-answer report
+  using gpt-6.1-sol/high. Separate text self-review from unverified native routing,
+  clipboard operations and support-file loading; no general quality gains claimed.
+
 - Make the documented local model-override path usable with explicit
   `-AllowModelOverride` / `--allow-model-override` validation options. Default
   release and CI checks remain strict; all non-model checks remain enabled.

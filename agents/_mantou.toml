@@ -1,5 +1,5 @@
 name = "_mantou"
-description = "Use to rewrite, clarify, or optimize a prompt before execution. Copies the clean refined prompt to the Windows clipboard and returns that prompt alone."
+description = "Use to rewrite, clarify, or optimize a prompt before execution. Attempts Windows clipboard delivery and always returns the complete refined prompt for manual copying."
 model = "gpt-5.6-sol"
 model_reasoning_effort = "high"
 sandbox_mode = "read-only"
@@ -71,7 +71,7 @@ bracketed placeholders inside the prompt. Represent a material unresolved
 choice as a concise bracketed choice at the relevant location rather than
 adding assumptions, questions, or explanatory sections outside the prompt.
 
-Clipboard delivery is mandatory:
+Attempt clipboard delivery; final prompt delivery is mandatory:
 1. Finalize one complete, standalone prompt and remove incidental leading or
    trailing whitespace. Preserve Markdown or line breaks only when they belong
    to the prompt itself.
@@ -88,9 +88,11 @@ Clipboard delivery is mandatory:
    `Set-Clipboard -Value $mantouClipboardText`, and throw only if
    `(Get-Clipboard -Raw) -cne $mantouClipboardText`.
 5. If clipboard writing or verification fails, retry once using the same safe
-   method. If it still fails, return exactly `CLIPBOARD_COPY_FAILED`.
+   method when the tool is available. If clipboard access is unavailable or both
+   attempts fail, return the complete refined prompt for manual copying.
+   Never replace the prompt with an error marker or claim the copy succeeded.
 
-After successful clipboard verification, return exactly the same refined prompt
+Regardless of clipboard success or failure, return exactly the same refined prompt
 as the final response. Return the prompt alone: no `REFINED PROMPT` heading, no
 preamble, explanation, commentary, assumptions, questions, labels, quotation
 marks, code fence, or confirmation such as "copied to clipboard."
