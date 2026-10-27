@@ -29,34 +29,34 @@ foreach ($item in $items) {
     }
 }
 
+# Only explicitly packaged files are managed; source checkout overlays stay private.
+$manifest = @(Get-Content -Raw -LiteralPath (Join-Path $packageRoot 'managed-files.json') | ConvertFrom-Json)
+$selectedFiles = @($manifest | Where-Object {
+    $entry = $_
+    @($items | Where-Object { $entry -eq "agents/$_" -or $entry.StartsWith("agents/$_/") }).Count -gt 0
+})
+foreach ($item in $items) {
+    if (-not @($selectedFiles | Where-Object { $_ -eq "agents/$item" -or $_.StartsWith("agents/$item/") }).Count) {
+        throw "No managed files listed for: $item"
+    }
+}
+foreach ($entry in $selectedFiles) {
+    if ($entry -notmatch '^agents/[A-Za-z0-9_./-]+$' -or $entry -match '(^|/)\.\.(/|$)' -or
+        $entry -match '(^|/)(source\.local\.json|knowledge-map\.local\.md)$') {
+        throw "Invalid managed file entry: $entry"
+    }
+    if (-not (Test-Path -LiteralPath (Join-Path $packageRoot $entry) -PathType Leaf)) {
+        throw "Managed source is missing: $entry"
+    }
+}
 if (-not $PSCmdlet.ShouldProcess($targetRoot, "Install managed Codex agent files")) {
     Write-Host "No files changed. Target would be $targetRoot"
     return
 }
-
-New-Item -ItemType Directory -Path $targetRoot -Force | Out-Null
-
-# Copy managed files to their exact relative paths. Copying a directory onto an
-# existing directory would create _invest/_invest or _manuel/_manuel. File-level
-# updates also preserve unmanaged local files such as knowledge-map.local.md.
-foreach ($item in $items) {
-    $source = Join-Path $sourceRoot $item
-    if (Test-Path -LiteralPath $source -PathType Leaf) {
-        $sourceFiles = @(Get-Item -LiteralPath $source -Force)
-    }
-    else {
-        $sourceFiles = @(Get-ChildItem -LiteralPath $source -File -Recurse -Force | Where-Object {
-            $_.Name -ne 'source.local.json' -and $_.Extension -ne '.pyc' -and
-            $_.FullName -notmatch '[/\\]__pycache__[/\\]'
-        })
-    }
-    foreach ($sourceFile in $sourceFiles) {
-        $relativePath = $sourceFile.FullName.Substring($sourceRoot.Length).TrimStart('\', '/')
-        $targetFile = Join-Path $targetRoot $relativePath
-        $targetDirectory = Split-Path -Parent $targetFile
-        New-Item -ItemType Directory -Path $targetDirectory -Force | Out-Null
-        Copy-Item -LiteralPath $sourceFile.FullName -Destination $targetFile -Force:$Force
-    }
+foreach ($entry in $selectedFiles) {
+    $targetFile = Join-Path $codexRoot $entry
+    New-Item -ItemType Directory -Path (Split-Path -Parent $targetFile) -Force | Out-Null
+    Copy-Item -LiteralPath (Join-Path $packageRoot $entry) -Destination $targetFile -Force:$Force
 }
 
 Write-Host "Installed $($Agent -join ', ') to $targetRoot"

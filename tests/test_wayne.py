@@ -26,6 +26,17 @@ XML = b'''<html><body><section id="ch01"><h1>Chapter</h1>
 
 
 class WayneSourceTests(unittest.TestCase):
+
+    def test_nested_container_cannot_cross_heading_boundary(self):
+        xml = b'<html><body><h1 id="one">One</h1><blockquote><p>IN_SCOPE</p><h1 id="two">Two</h1>OUTSIDE_TAIL<p>OUT_OF_SCOPE</p></blockquote></body></html>'
+        self.assertEqual(source.section(xml, "one").split("\n\n"), ["One", "IN_SCOPE"])
+        self.assertIn("OUT_OF_SCOPE", source.section(xml, "two"))
+    def test_mixed_nested_blocks_preserve_text_once_in_order(self):
+        xml = b'<html><body><section id="chapter"><ul><li>BEFORE<ul><li>INNER</li></ul>AFTER</li></ul><blockquote>QUOTE<p>BODY <em>inline</em></p>TAIL</blockquote><table><tr><td>CELL<p>DETAIL</p>END</td></tr></table></section></body></html>'
+        value = source.section(xml, "chapter")
+        expected = ["BEFORE", "INNER", "AFTER", "QUOTE", "BODY inline", "TAIL", "CELL", "DETAIL", "END"]
+        self.assertEqual(value.split("\n\n"), expected)
+
     def test_section_boundaries_and_nested_list_text(self):
         value = source.section(XML, "a")
         self.assertIn("A synthetic example.", value)

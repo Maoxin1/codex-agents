@@ -111,6 +111,10 @@ Before installation, review [`COMPATIBILITY.md`](COMPATIBILITY.md) for model acc
 
 中文入门见[简单使用指南](docs/quickstart.md)：如何选人、怎样提问、何时联合分析，以及安装和原书配置说明。
 
+[日常 coding 评估方案](docs/evaluation-plan.md)列出八个场景、与普通主 agent 的比较方法及验收标准。[首轮结果](docs/evaluation-results-2026-10-27.md)包含 16 份真实回答的文本自评；当时的运行受到支持文件读取限制影响。
+
+[后续读取验证](docs/source-access-verification-2026-10-27.md)已确认 `_wayne` 原生调用与修正后的 CLI 能读取支持文件。其他顾问及更复杂行为继续按需验证。
+
 Ask Codex to call the relevant agent:
 
 ```text

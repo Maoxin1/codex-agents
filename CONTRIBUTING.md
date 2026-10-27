@@ -22,6 +22,24 @@ changed model defaults for publication.
 
 Behavior evaluation can require a configured Codex environment and is not part of the default CI. Follow the relevant agent's test README and state what was run in the pull request.
 
+Installation copies only paths in `managed-files.json`. When adding or removing a
+versioned file under `agents/`, update this list in the same change. Source-checkout
+private overlays and other unlisted files are never installed. Updates preserve
+unmanaged destination files; automatic removal of obsolete files is not implemented.
+
+The [coding evaluation draft](docs/evaluation-plan.md) defines paired comparisons
+and pending edge cases. Offline checks use a fake CLI to test evaluation recording;
+they do not run a model or establish semantic quality.
+
+`tests/run_coding_eval.py` is a separate, opt-in runner for the eight paired
+scenarios. It requires `--authorize-model-calls` and an output directory outside
+the repository. It uses the selected model and reasoning setting for both arms,
+retains private JSONL events and usage, and stops before later scenarios if a
+call fails. Running it is not part of CI; obtain explicit authorization first.
+On Windows it preserves only the existing `windows.sandbox` backend and performs
+a model-free read-only preflight before any inference. A missing backend or failed
+read stops the run. It does not change global configuration or enable broad access.
+
 ## Change and release policy
 
 - Record repository-wide changes under `Unreleased` in `CHANGELOG.md`.

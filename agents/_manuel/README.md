@@ -31,3 +31,5 @@ python (Join-Path $agentRoot 'agents/_manuel/tests/validate_manuel.py')
 ```
 
 可用行为用例 ID 见 `tests/cases.json`。行为脚本只检查最终回答的保守词法契约；它是回归烟雾测试，不替代人工语义审查。若要额外核验本地合法取得的原书 PDF，请先设置 `MANUEL_SOURCE_PDF` 环境变量。
+
+脚本输出 `LEXICAL SMOKE PASSED/FAILED`，在系统临时目录的 `codex-agents-evals/<运行 ID>/` 中保留 `answer.txt`、`cli.log` 和 `record.json`。可用 `-OutputDirectory` 指定仓库以外的私有目录；记录包括模型请求、reasoning、配置与支持文件哈希、耗时、退出码及词法检查结果。语义评审状态始终初始为 `pending`，需另行人工评阅。日志可能包含私人输入或路径，不自动提交。此脚本验证独立加载配置的路径，原生 agent 注册与调度需单独验证。

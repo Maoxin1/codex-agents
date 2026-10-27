@@ -29,6 +29,17 @@ XML = b'''<!DOCTYPE html><html><head><title>Not content</title></head><body>
 
 
 class SharedSourceTests(unittest.TestCase):
+
+    def test_nested_container_cannot_cross_heading_boundary(self):
+        xml = b'<html><body><h1 id="one">One</h1><blockquote><p>IN_SCOPE</p><h1 id="two">Two</h1>OUTSIDE_TAIL<p>OUT_OF_SCOPE</p></blockquote></body></html>'
+        self.assertEqual(epub.section(xml, "one").split("\n\n"), ["One", "IN_SCOPE"])
+        self.assertIn("OUT_OF_SCOPE", epub.section(xml, "two"))
+    def test_mixed_nested_blocks_preserve_text_once_in_order(self):
+        xml = b'<html><body><section id="chapter"><ul><li>BEFORE<ul><li>INNER</li></ul>AFTER</li></ul><blockquote>QUOTE<p>BODY <em>inline</em></p>TAIL</blockquote><table><tr><td>CELL<p>DETAIL</p>END</td></tr></table></section></body></html>'
+        value = epub.section(xml, "@document")
+        expected = ["BEFORE", "INNER", "AFTER", "QUOTE", "BODY inline", "TAIL", "CELL", "DETAIL", "END"]
+        self.assertEqual(value.split("\n\n"), expected)
+
     def test_html_entities_inline_text_and_nested_lists(self):
         value = epub.section(XML, "text:Repeated title", within="one")
         self.assertIn('A “quoted” synthetic & example.', value)
