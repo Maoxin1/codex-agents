@@ -50,6 +50,6 @@ py -3 "$waynePackage/source.py" read --chapter 1 --anchor ah0103 --limit 4000
 
 ## 验证状态
 
-已完成的检查见 [验证记录](validation.md)。离线回归使用合成文本；真实 EPUB 只在维护者本地检查。行为验收用例见 [tests/cases.json](tests/cases.json)，**模型行为评估尚未运行**，试用效果尚无实证结论。
+已完成的检查见 [验证记录](validation.md)。离线回归使用合成文本；真实 EPUB 只在维护者本地检查。行为验收用例见 [tests/cases.json](tests/cases.json)。已完成[首轮文本自评](../../docs/evaluation-results-2026-10-27.md)，该轮受到支持文件读取限制；后续已通过[原生调用及 CLI 读取验证](../../docs/source-access-verification-2026-10-27.md)。这些结果不证明整体知识增益，仍保留试用状态。
 
 调用真实模型的评估须遵循仓库 AGENTS.md 的单独授权要求。日常明确请教顾问与批量付费行为评估分别处理。
