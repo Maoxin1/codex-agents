@@ -15,7 +15,7 @@
 在仓库根目录运行：
 
 ```powershell
-./install.ps1
+./install.ps1 -Agent _invest
 ```
 
 知识库位置按以下优先级解析：

@@ -4,7 +4,7 @@
 
 ## 安装与调用
 
-在仓库根目录运行 `./install.ps1`，重启 Codex 后调用：
+在仓库根目录运行 `./install.ps1 -Agent _factbot`，重启 Codex 后调用：
 
 > 请调用 `_factbot`，核验以下主张，并区分事实、推论和仍未核实的部分：［主张］
 

@@ -13,10 +13,11 @@ ROOT = Path(__file__).resolve().parents[1]
 class EvaluationRecordTests(unittest.TestCase):
     def test_pass_failure_and_cli_error_preserve_records(self):
         script = ROOT / "agents/_manuel/tests/run_behavior_eval.ps1"
-        for answer, code, expected in [
-            ("未核实事实性主张，需要比较因果，证据不足，可能。", 0, "smoke-passed"),
-            ("unrelated answer", 0, "smoke-failed"),
-            ("", 7, "cli-failed"),
+        for answer, code, expected, case_id in [
+            ("未核实事实性主张，需要比较因果，证据不足，可能。", 0, "smoke-passed", "causal_complaints"),
+            ("unrelated answer", 0, "smoke-failed", "causal_complaints"),
+            ("", 7, "cli-failed", "causal_complaints"),
+            ("unrelated answer", 0, "review-required", "confirm_personal_goal"),
         ]:
             with self.subTest(expected=expected), tempfile.TemporaryDirectory() as folder:
                 # PowerShell single-quoted data literals; never invoke a real codex.
@@ -28,11 +29,11 @@ class EvaluationRecordTests(unittest.TestCase):
                     f" Set-Content -LiteralPath $args[$idx + 1] -Value {quote(answer)} -Encoding utf8\n"
                     f" $global:LASTEXITCODE = {code}\n"
                     " Write-Output 'synthetic CLI log'\n}\n"
-                    f"& {quote(script)} -OutputDirectory {quote(folder)}\nexit $LASTEXITCODE\n",
+                    f"& {quote(script)} -CaseId {quote(case_id)} -OutputDirectory {quote(folder)}\nexit $LASTEXITCODE\n",
                     encoding="utf-8")
                 result = subprocess.run(["pwsh", "-NoProfile", "-File", str(wrapper)],
                                         capture_output=True, text=True, encoding="utf-8")
-                self.assertEqual(result.returncode, 0 if expected == "smoke-passed" else code or 1,
+                self.assertEqual(result.returncode, 0 if expected in {"smoke-passed", "review-required"} else code or 1,
                                  result.stdout + result.stderr)
                 records = list(Path(folder).glob("*/record.json"))
                 self.assertEqual(len(records), 1, result.stdout + result.stderr)

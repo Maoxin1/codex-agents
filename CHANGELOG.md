@@ -6,7 +6,21 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+### Breaking
+
+- 默认安装从八个入口改为 manuel/mantou 两个；完整安装使用 -All。保留旧角色文件与显式安装，不自动卸载现有角色。发布为新主版本时请说明此迁移。
+- manuel 从单书审计扩展为个人思考与行动伙伴，按需读取五书方法，增加记录来源、目标确认、纠错、机会试验和复盘规范；新行为待实测。
+- mantou 压缩重复指令，短请求不默认扩写成复杂工作流，保留安全剪贴板交付。
+
+
+### Changed
+
+- 五位书籍顾问明确优先职责、条件式交接与联合咨询证据约定，保留点名调用和各书方法。
+- 连续安装书籍顾问复用相同公共依赖；不同内容在写入前报错。新增连续安装、冲突及显式强制更新回归。
+
 ### Added
+
+- 新增八位顾问职责重叠审查、统一选择入口、联合咨询交接约定和角色合并验收方案；保留现有角色与运行契约，未执行新增模型评估。
 
 - 新增八位 agent 的验证状态表，汇总现有证据与尚待验证的行为。
 
@@ -71,6 +85,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 ## [0.1.0] - 2026-08-30
 
 ### Added
+
+- 新增八位顾问职责重叠审查、统一选择入口、联合咨询交接约定和角色合并验收方案；保留现有角色与运行契约，未执行新增模型评估。
 
 - Windows CI for installer, agent validators, unit tests, PowerShell parsing, and TOML parsing.
 - Installer and private-overlay regression tests.

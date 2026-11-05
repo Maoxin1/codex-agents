@@ -2,6 +2,12 @@
 
 这份手册说明如何在 coding 过程中选顾问、提供材料、理解回答，并把建议交给主 coding agent 执行。当前共八位 agent；四位新书籍顾问仍处于试用阶段。
 
+## 日常从两个入口开始
+
+默认安装 `_manuel` 和 `_mantou`。`_manuel` 已整合五本书的方法，负责目标核对、逻辑审计与行动选择；`_mantou` 只把请求改清楚，保留简短请求的规模。下列八个示例包含可选旧角色；安装全部角色需使用 `./install.ps1 -All`。
+
+个人笔记、ChatGPT/Codex/Gemini 导出或群聊样本需要实际可访问且获授权。先用相关小样本；不必先付费导出所有历史。配置和限制见[伙伴指南](../agents/_manuel/README.md)。
+
 ## 1. 安装后，先完成一次简单调用
 
 准备支持自定义 agent 的 Codex 和 PowerShell。使用原书读取工具或运行仓库检查，还需要 Python 3.11 或更新版本。模型和平台要求见[兼容性说明](../COMPATIBILITY.md)。
@@ -183,8 +189,8 @@
 # 更新指定顾问
 ./install.ps1 -Agent _wayne -Force
 
-# 更新全部
-./install.ps1 -Force
+# 更新全部（含可选角色）
+./install.ps1 -All -Force
 ```
 
 安装目录由 `CODEX_HOME` 决定；未设置时使用 `$HOME/.codex/agents`。更新后重启 Codex，当前对话不会自动刷新全部配置。

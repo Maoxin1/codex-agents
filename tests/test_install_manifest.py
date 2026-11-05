@@ -14,7 +14,7 @@ class InstallManifestTests(unittest.TestCase):
         for name in files:
             self.assertTrue(name.startswith("agents/"))
             self.assertNotIn("..", Path(name).parts)
-            self.assertNotIn(Path(name).name, {"source.local.json", "knowledge-map.local.md"})
+            self.assertNotIn(Path(name).name, {"source.local.json", "knowledge-map.local.md", "context.local.md"})
             self.assertTrue((ROOT / name).is_file(), name)
         result = subprocess.run(["git", "ls-files", "agents"], cwd=ROOT,
                                 capture_output=True, text=True)
