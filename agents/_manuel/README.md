@@ -1,35 +1,35 @@
-# `_manuel` 使用说明
+# `_manuel`：长期思考与行动伙伴
 
-`_manuel` 是持久化的 critical thinking guide，配置入口为相邻目录中的 `_manuel.toml`。运行核心、原则路由、主题原则、来源元数据和测试均位于本目录。
+日常不知道该问谁时，从这里开始。它根据当前对话及获授权的个人记录核对目标，直接质疑关键假设，比较适合当前约束的选项，并给出一个能开始的行动。可以单独检查逻辑；无需每次经历完整访谈。
 
-## 原生调用
+## 使用
 
-新开或重启 Codex 后，请求：
+仓库根目录运行 `./install.ps1` 默认安装 `_manuel` 和 `_mantou` 两个入口，并提供五本书的方法资料。重启 Codex 后点名调用：
 
-> 请调用 `_manuel`，分析：［你的问题、论证或决定］
+> 请调用 _manuel：我在考虑一个副业方向。先结合我授权的笔记核对目标和约束，等我确认，再直接指出问题，给出首选方案和第一步。
 
-在支持 agent type 的调度接口中使用 `agent_type = "_manuel"`。当前已经打开的根会话可能缓存旧的 agent 列表，新增配置不会热加载。
+> 请调用 _manuel：只检查这段推理，不需要完整访谈。
 
-## 独立命令行调用
+旧的四位书籍角色可选安装，方法整合不需要启动它们。事实核验与投资研究角色也保留为可选入口。
 
-即使当前会话尚未重新扫描 agent，也可直接加载同一持久配置：
+## 个人资料与持续使用
 
-```powershell
-$agentRoot = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME '.codex' }
-& (Join-Path $agentRoot 'agents/_manuel/invoke_manuel.ps1') -Prompt '请审计：新功能上线后投诉多了，所以它一定导致体验变差。'
-```
+知识库按本次路径、工作区 AGENTS.md、MANUEL_VAULT_PATH 依次解析。可在已安装支持目录建立 `context.local.md`，记录用户授权的知识库和聊天导出入口；这个文件不提交 Git，更新时保留。详见 [context.md](context.md)。
 
-默认使用 `gpt-5.6-terra` / `medium`。复杂、高价值且已有评测证明收益时，可显式传入 `-Model gpt-5.6-sol -Reasoning high`。
+ChatGPT、Codex、Gemini 或群聊记录需要实际提供导出或可用连接；本包不会自动获得账号历史。先用少量相关记录验证效果，不以付费导出所有历史为前提。角色只读，不自动维护画像或同步资料；可输出简短复盘，由用户或获授权的主 agent 保存。
+
+## 五本书与扩充
+
+[方法路由](methods.md)按问题选择已有书籍资料，保留出处、适用范围与分歧。新增逻辑书籍时扩充方法资料与验证用例即可，无需新增 agent。精确引文仍需核验可访问原书。
+
+## 输出与边界
+
+- 直接、有依据地指出矛盾，允许严肃措辞；不辱骂、不诊断人格，不宣称读心。
+- 个人记录、推测和用户确认分开；用户纠正后更新理解。
+- 机会建议区分适配证据、当代市场证据和待验证假设，不保证收益。
+- 本角色提供分析和行动草稿；不执行交易、购买、联络或文件写入。
+- 权限由父会话决定；角色约定不等于独立技术沙箱。
 
 ## 验证
 
-```powershell
-$agentRoot = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME '.codex' }
-$env:PYTHONIOENCODING='utf-8'
-python (Join-Path $agentRoot 'agents/_manuel/tests/validate_manuel.py')
-& (Join-Path $agentRoot 'agents/_manuel/tests/run_behavior_eval.ps1') -CaseId 'causal_complaints'
-```
-
-可用行为用例 ID 见 `tests/cases.json`。行为脚本只检查最终回答的保守词法契约；它是回归烟雾测试，不替代人工语义审查。若要额外核验本地合法取得的原书 PDF，请先设置 `MANUEL_SOURCE_PDF` 环境变量。
-
-脚本输出 `LEXICAL SMOKE PASSED/FAILED`，在系统临时目录的 `codex-agents-evals/<运行 ID>/` 中保留 `answer.txt`、`cli.log` 和 `record.json`。可用 `-OutputDirectory` 指定仓库以外的私有目录；记录包括模型请求、reasoning、配置与支持文件哈希、耗时、退出码及词法检查结果。语义评审状态始终初始为 `pending`，需另行人工评阅。日志可能包含私人输入或路径，不自动提交。此脚本验证独立加载配置的路径，原生 agent 注册与调度需单独验证。
+运行 `py -3 agents/_manuel/tests/validate_manuel.py` 或完整仓库验证。静态检查与旧行为评估不能证明新的个人化流程有效；新增合成案例待实际评测。

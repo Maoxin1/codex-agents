@@ -43,11 +43,16 @@ $record = [ordered]@{
     status = 'incomplete'; failures = @(); semantic_review = 'pending'
 }
 $packageHashes = [ordered]@{}
-Get-ChildItem -LiteralPath $manuelRoot -File -Recurse | Where-Object {
-    $_.Extension -in @('.md', '.json', '.ps1', '.py') -and $_.Name -notlike '*.local.*'
-} | Sort-Object FullName | ForEach-Object {
-    $relative = $_.FullName.Substring($manuelRoot.Length).TrimStart('\', '/')
-    $packageHashes[$relative] = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash
+$agentsRoot = Split-Path -Parent $manuelRoot
+foreach ($packageName in @('_manuel', '_wayne', '_clayton', '_alan', '_jim', '_book_sources')) {
+    $packagePath = Join-Path $agentsRoot $packageName
+    if (-not (Test-Path -LiteralPath $packagePath)) { continue }
+    Get-ChildItem -LiteralPath $packagePath -File -Recurse | Where-Object {
+        $_.Extension -in @('.md', '.json', '.ps1', '.py') -and $_.Name -notlike '*.local.*'
+    } | Sort-Object FullName | ForEach-Object {
+        $relative = $_.FullName.Substring($agentsRoot.Length).TrimStart('\', '/')
+        $packageHashes[$relative] = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash
+    }
 }
 $record.support_file_sha256 = $packageHashes
 $timer = [Diagnostics.Stopwatch]::StartNew()
@@ -61,6 +66,12 @@ try {
     }
 
     $lastMessage = Get-Content -Raw -LiteralPath $lastMessagePath
+    if (@($case.must_match).Count -eq 0 -and @($case.must_not_match).Count -eq 0) {
+        $record.check = 'semantic-only'
+        $record.status = 'review-required'
+        Write-Host "SEMANTIC REVIEW REQUIRED [$CaseId]; no lexical pass is claimed."
+        return
+    }
     $failures = [System.Collections.Generic.List[string]]::new()
     foreach ($pattern in $case.must_match) {
         if ($lastMessage -cnotmatch $pattern) {

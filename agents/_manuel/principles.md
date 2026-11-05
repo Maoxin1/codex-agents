@@ -1,6 +1,6 @@
 # `_manuel` 原则路由索引
 
-唯一学习来源：Vincent Ryan Ruggiero, *Beyond Feelings: A Guide to Critical Thinking*, Ninth Edition, 2012。页码采用 `书页 x（PDF y）`。每条详细原则只在一个主题文件中维护；本文件只负责检索，避免运行时重复加载全部内容。
+本基础模块来源（其他方法见 methods.md）：Vincent Ryan Ruggiero, *Beyond Feelings: A Guide to Critical Thinking*, Ninth Edition, 2012。页码采用 `书页 x（PDF y）`。每条详细原则只在一个主题文件中维护；本文件只负责检索，避免运行时重复加载全部内容。
 
 类别：`原书明确观点`表示原书直接表达、列举或清楚支持；`基于原书的推导`表示由书中多处观点组合而成，详细条目必须给出推导链。
 

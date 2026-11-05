@@ -36,16 +36,33 @@ function Assert-ManagedFilesMatch {
 try {
     New-Item -ItemType Directory -Path $testRoot | Out-Null
 
+    # The default exposes two roles but installs all routed method materials.
+    $defaultRoot = Join-Path $testRoot 'default'
+    $env:CODEX_HOME = $defaultRoot
+    & $installer
+    $roleNames = @(Get-ChildItem (Join-Path $defaultRoot 'agents') -Filter '*.toml' | Select-Object -ExpandProperty BaseName)
+    Assert-True ($roleNames.Count -eq 2 -and '_manuel' -in $roleNames -and '_mantou' -in $roleNames) 'Default must expose exactly two roles.'
+    foreach ($method in @('_wayne', '_clayton', '_alan', '_jim')) {
+        Assert-True (Test-Path -LiteralPath (Join-Path $defaultRoot "agents/$method/principles.md")) "Missing integrated method: $method"
+    }
+    Assert-True (Test-Path -LiteralPath (Join-Path $defaultRoot 'agents/_book_sources/epub.py')) 'Integrated methods need the shared reader.'
+    $privateContext = Join-Path $defaultRoot 'agents/_manuel/context.local.md'
+    Set-Content -LiteralPath $privateContext -Value 'synthetic-private-context'
+    & $installer -Force
+    Assert-True ((Get-Content -Raw -LiteralPath $privateContext).Trim() -eq 'synthetic-private-context') 'Update replaced private context.'
+    & $installer -Agent _alan
+    Assert-True (Test-Path -LiteralPath (Join-Path $defaultRoot 'agents/_alan.toml')) 'Installing an optional role after its method package failed.'
+
     $cleanRoot = Join-Path $testRoot 'clean'
     $env:CODEX_HOME = $cleanRoot
-    & $installer
+    & $installer -All
     Assert-ManagedFilesMatch $cleanRoot
 
     $overlay = Join-Path $cleanRoot 'agents/_invest/knowledge-map.local.md'
     Set-Content -LiteralPath $overlay -Value 'private-local-overlay' -Encoding utf8
     $wayneOverlay = Join-Path $cleanRoot 'agents/_wayne/source.local.json'
     Set-Content -LiteralPath $wayneOverlay -Value '{"epub":"private-placeholder"}' -Encoding utf8
-    & $installer -Force
+    & $installer -All -Force
     Assert-ManagedFilesMatch $cleanRoot
     Assert-True ((Get-Content -Raw -LiteralPath $overlay).Trim() -eq 'private-local-overlay') 'Force update changed the private overlay.'
     Assert-True ((Get-Content -Raw -LiteralPath $wayneOverlay).Trim() -eq '{"epub":"private-placeholder"}') 'Force update changed the local book configuration.'
@@ -64,10 +81,10 @@ try {
     $managedTarget = Join-Path $cleanRoot 'agents/_mantou.toml'
     Set-Content -LiteralPath $managedTarget -Value 'local-managed-change' -Encoding utf8
     $beforeWhatIf = (Get-FileHash -LiteralPath $managedTarget -Algorithm SHA256).Hash
-    & $installer -Force -WhatIf
+    & $installer -All -Force -WhatIf
     $afterWhatIf = (Get-FileHash -LiteralPath $managedTarget -Algorithm SHA256).Hash
     Assert-True ($beforeWhatIf -eq $afterWhatIf) '-WhatIf changed a managed target file.'
-    & $installer -Force
+    & $installer -All -Force
     Assert-ManagedFilesMatch $cleanRoot
     Assert-True ((Get-Content -Raw -LiteralPath $overlay).Trim() -eq 'private-local-overlay') 'Update after -WhatIf changed the private overlay.'
 
@@ -78,7 +95,7 @@ try {
     $env:CODEX_HOME = $partialRoot
     $failedAsExpected = $false
     try {
-        & $installer
+        & $installer -All
     }
     catch {
         $failedAsExpected = $true
@@ -103,6 +120,22 @@ try {
     Assert-True (Test-Path -LiteralPath (Join-Path $singleBookRoot 'agents/_book_sources/epub.py')) 'Book advisor install omitted its shared reader.'
     Assert-True (Test-Path -LiteralPath (Join-Path $singleBookRoot 'agents/_jim/source.py')) 'Book advisor install omitted its entry point.'
     Assert-True (-not (Test-Path -LiteralPath (Join-Path $singleBookRoot 'agents/_alan.toml'))) 'Single book install included another advisor.'
+
+    # Adding another advisor reuses identical shared files without forcing an update.
+    $sharedReader = Join-Path $singleBookRoot 'agents/_book_sources/epub.py'
+    $sharedHash = (Get-FileHash -LiteralPath $sharedReader).Hash
+    & $installer -Agent _alan
+    Assert-True (Test-Path -LiteralPath (Join-Path $singleBookRoot 'agents/_alan.toml')) 'Sequential advisor install failed.'
+    Assert-True ((Get-FileHash -LiteralPath $sharedReader).Hash -eq $sharedHash) 'Shared reader changed during reuse.'
+    Set-Content -LiteralPath $sharedReader -Value 'local-shared-change'
+    $failedAsExpected = $false
+    try { & $installer -Agent _clayton }
+    catch { $failedAsExpected = $true }
+    Assert-True $failedAsExpected 'Different shared reader was silently replaced.'
+    Assert-True (-not (Test-Path -LiteralPath (Join-Path $singleBookRoot 'agents/_clayton.toml'))) 'Dependency conflict left a partial install.'
+    Assert-True ((Get-Content -Raw -LiteralPath $sharedReader).Trim() -eq 'local-shared-change') 'Dependency conflict modified local content.'
+    & $installer -Agent _clayton -Force
+    Assert-True ((Get-FileHash -LiteralPath $sharedReader).Hash -eq $sharedHash) 'Explicit shared dependency update failed.'
 
     # An ignored overlay in the source checkout must never become managed.
     $fixturePackage = Join-Path $testRoot 'fixture-package'
