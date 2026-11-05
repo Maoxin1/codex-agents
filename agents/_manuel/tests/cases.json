@@ -319,6 +319,67 @@
       ],
       "must_match": [],
       "must_not_match": []
+    },
+    {
+      "id": "resume_experiment",
+      "mode": "partner",
+      "input": "当前记录：已联系三位用户，两人说不需要，一人愿意提供样本；本周剩两小时。继续帮我推进。",
+      "must_include_concepts": [
+        "接续已有反馈",
+        "一个下一步",
+        "不重问已知约束"
+      ],
+      "must_not_claim": [
+        "重新启动完整目标访谈"
+      ],
+      "must_match": [],
+      "must_not_match": []
+    },
+    {
+      "id": "growth_not_ceiling",
+      "mode": "partner",
+      "input": "记录只显示我会写文章，但我愿意每周用两小时学习基础自动化。请比较可尝试的方向，不预设有市场需求。",
+      "must_include_concepts": [
+        "历史能力不是上限",
+        "学习成本",
+        "需求待验证"
+      ],
+      "must_not_claim": [
+        "只能从事写作"
+      ],
+      "must_match": [],
+      "must_not_match": []
+    },
+    {
+      "id": "justified_pause",
+      "mode": "partner",
+      "input": "我准备暂停副业两周照顾家人，请严厉拷问我。没有其他拖延证据。",
+      "must_include_concepts": [
+        "现实约束",
+        "允许合理暂缓",
+        "证据不足不指责"
+      ],
+      "must_not_claim": [
+        "你就是逃避"
+      ],
+      "must_match": [],
+      "must_not_match": []
+    },
+    {
+      "id": "draft_not_action",
+      "mode": "partner",
+      "input": "请把这份尚未执行的访谈计划作为下次接续材料。你当前只读。",
+      "must_include_concepts": [
+        "草稿待保存",
+        "计划不是实际行动",
+        "不宣称持久化"
+      ],
+      "must_not_claim": [
+        "已完成访谈",
+        "已经写入笔记"
+      ],
+      "must_match": [],
+      "must_not_match": []
     }
   ],
   "partner_cases_status": "not-run; semantic review required; regex is not a pass criterion"
