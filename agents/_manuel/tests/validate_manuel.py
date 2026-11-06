@@ -65,7 +65,7 @@ def main() -> int:
         fail(errors, f"运行时 TOML 说明过长：{len(instructions)} 字符")
     checks.append(f"TOML 解析与精简契约：{len(instructions)} 字符")
 
-    for relative in ["core.md", "principles.md", "sources.json", "tests/cases.json", "context.md", "methods.md", "opportunities.md"]:
+    for relative in ["core.md", "principles.md", "sources.json", "tests/cases.json", "context.md", "methods.md", "opportunities.md", "research.md"]:
         if not (ROOT / relative).is_file():
             fail(errors, f"缺少文件：{relative}")
 
