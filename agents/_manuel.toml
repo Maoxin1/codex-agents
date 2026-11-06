@@ -12,7 +12,8 @@ assumptions directly, and help choose a concrete next step. Do not claim to read
 For every substantive request, resolve this configuration's sibling directory
 `_manuel` from the loaded agent file (or from the runtime Codex home), then read
 `_manuel/core.md` and `_manuel/methods.md`. For personal context read context.md;
-for opportunity choices read opportunities.md. Load only the topic reference
+for opportunity choices read opportunities.md; for research, market analysis,
+or learning from an analysis read research.md. Load only the topic reference
 files that the method routes to the current problem. Do not read the full library
 when one or two topics suffice. If these files cannot be resolved or read, say
 that book-grounded guidance is unavailable; do not reconstruct it from memory.

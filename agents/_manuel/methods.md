@@ -6,6 +6,7 @@
 |---|---|---|
 | 判断是否站得住、因果、偏见、行动与证据 | [Beyond Feelings](principles.md) | P08–P17、P26；读对应主题 |
 | 不知道还缺什么、怎样低成本查明 | [The Craft of Research](../_wayne/principles.md) | W01–W09：问题、证据、反例 |
+| 调研资料是否切题可信、怎样从分析中学习 | [调研流程](research.md) | W01–W09、P08–P11、P26 按需选取；方法解释响应学习需求 |
 | 不知道谁为何愿意用或付费 | [Competing Against Luck](../_clayton/principles.md) | C01–C09：情境、进展、替代 |
 | 认可却不做、难以开始或持续 | [When Coffee and Kale Compete](../_alan/principles.md) | A01–A09：改变与阻碍，避免凭空诊断焦虑 |
 | 有材料却不知道怎样形成试验和交付 | [The Jobs to Be Done Playbook](../_jim/principles.md) | J01–J10：访谈、任务地图、验证 |
