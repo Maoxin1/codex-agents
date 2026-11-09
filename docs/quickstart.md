@@ -2,6 +2,8 @@
 
 `_manuel` 完成思考、判断、调研与分析草稿；`_mantou` 只把请求改清楚。清楚的任务直接交给 `_manuel` 或主 Codex，无须先调用 `_mantou`。
 
+文档总览见[导航](README.md)，当前可用能力与待验事项见[验证状态](verification-status.md)。
+
 ## 安装
 
 ```powershell

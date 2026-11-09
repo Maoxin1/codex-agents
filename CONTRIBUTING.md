@@ -13,6 +13,8 @@ Publish exactly two agents: `_manuel` and `_mantou`. Books and task-specific met
 ./tests/validate_repository.ps1
 ```
 
+See the [test guide](tests/README.md) for individual checks and evaluation boundaries, and the [documentation map](docs/README.md) for file responsibilities.
+
 The suite checks the exact published agent set, default and selective installation, rejected retired names, migration preview/backup/idempotence, private and modified file preservation, source readers, the two configuration contracts, model overrides, evaluation bookkeeping, links, privacy patterns and PowerShell syntax. No model calls occur. Optional private-source validation must be reported separately.
 
 Use -AllowModelOverride only for intentional local preferences; release validation is strict. Install updates replace managed TOML; migration of retired entries is a separate previewable script, never recursive deletion of user data.
