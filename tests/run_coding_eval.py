@@ -74,8 +74,8 @@ def main() -> int:
         if line.startswith("| `_"):
             cells = [c.strip() for c in line.strip("|").split("|")]
             cases.append({"agent": cells[0].strip("`"), "input": cells[1]})
-    if len(cases) != 8:
-        parser.error("Expected exactly eight approved scenarios")
+    if len(cases) != 2 or {c["agent"] for c in cases} != {"_manuel", "_mantou"}:
+        parser.error("Expected one scenario for each of the two published agents")
     manifest = json.loads((ROOT / "managed-files.json").read_text(encoding="utf-8"))
     hashes = {entry: hashlib.sha256((ROOT / entry).read_bytes()).hexdigest() for entry in manifest}
     (output / "environment.json").write_text(json.dumps({
@@ -95,7 +95,7 @@ def main() -> int:
         # Both arms see the same public package; no private overlay or book copied.
         for entry in manifest:
             relative = entry.removeprefix("agents/")
-            if relative == case["agent"] + ".toml" or relative.startswith(case["agent"] + "/") or relative.startswith("_book_sources/"):
+            if relative == case["agent"] + ".toml" or relative.startswith(case["agent"] + "/"):
                 target = workspace / entry
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(ROOT / entry, target)

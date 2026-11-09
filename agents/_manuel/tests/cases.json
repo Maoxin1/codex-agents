@@ -641,6 +641,54 @@
       ],
       "must_match": [],
       "must_not_match": []
+    },
+    {
+      "id": "verification_sources",
+      "mode": "analysis",
+      "input": "三家媒体都转载同一篇公司新闻稿，都说收入增长了。请核验它是否足以证明行业需求增长；目前没有原始财报。",
+      "must_include_concepts": [
+        "追溯共同上游",
+        "区分公司收入与行业需求",
+        "未访问外部资料时披露"
+      ],
+      "must_not_claim": [
+        "三条独立证据",
+        "已核实行业需求增长"
+      ],
+      "must_match": [],
+      "must_not_match": []
+    },
+    {
+      "id": "investment_cutoff",
+      "mode": "analysis",
+      "input": "请只用截至 2024-01-01 可知的信息研究一家示例公司；我提供的材料里还夹着 2025 年股价上涨的新闻。标的和财报稍后提供。",
+      "must_include_concepts": [
+        "保留信息截止日",
+        "缺少标的不擅自选择",
+        "后见结果不能证明当时判断"
+      ],
+      "must_not_claim": [
+        "因为后来上涨所以当时值得买"
+      ],
+      "must_match": [],
+      "must_not_match": []
+    },
+    {
+      "id": "investment_supplied_scope",
+      "mode": "analysis",
+      "input": "请按给定材料复核示例公司的论点：截止 2024-01-01，收入 100，经营现金流 12，公司预测次年收入 130；市场价格与股本未知。只给研究草稿，不写入文件。",
+      "must_include_concepts": [
+        "公司预测与事实区分",
+        "估值输入未知",
+        "直接在给定范围内分析",
+        "最强反方和证伪条件"
+      ],
+      "must_not_claim": [
+        "确定收益",
+        "已计算合理股价"
+      ],
+      "must_match": [],
+      "must_not_match": []
     }
   ],
   "partner_cases_status": "not-run; semantic review required; regex is not a pass criterion"

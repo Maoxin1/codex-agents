@@ -24,9 +24,6 @@ try {
     $pythonChecks = @(
         @('tests/validate_content.py'),
         @('-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py'),
-        @('agents/_factbot/tests/validate_factbot.py'),
-        @('-m', 'unittest', 'discover', '-s', 'agents/_invest/tests', '-p', 'test_*.py'),
-        @('agents/_invest/tests/validate_invest.py'),
         @('agents/_mantou/tests/validate_mantou.py'),
         @('agents/_manuel/tests/validate_manuel.py')
     )

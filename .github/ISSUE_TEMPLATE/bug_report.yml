@@ -12,8 +12,7 @@ body:
       label: Component
       options:
         - Installer
-        - _factbot
-        - _invest
+        - Legacy migration
         - _mantou
         - _manuel
         - Documentation or validation

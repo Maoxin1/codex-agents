@@ -1,5 +1,13 @@
 # Changelog
 
+## 两个 agent 收敛（Unreleased，破坏性变更）
+
+- 仅发布 `_manuel` 与 `_mantou`；移除六个旧入口及 -All 安装选项。
+- 书籍迁入 `_manuel/books/`，事实核验与投资研究整理为按需任务资料；新布局的行为效果尚未验证。
+- 提供旧入口预览、指纹识别、备份与私有来源配置迁移；修改过的配置保留。
+- 文档与评估收敛到两个入口；历史记录明确归档，新增精确集合与迁移回归。
+
+
 Notable repository-wide changes are documented here. Agent-specific behavior history may also appear in the agent's own changelog.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases use [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
