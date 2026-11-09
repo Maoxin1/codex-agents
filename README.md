@@ -14,14 +14,15 @@
 
 ## 安装与使用
 
+在 PowerShell 中获取仓库并安装：
+
 ```powershell
+git clone https://github.com/Maoxin1/codex-agents.git
+cd codex-agents
 ./install.ps1
-# 只安装一个 agent
-./install.ps1 -Agent _manuel
-# 更新两个 agent，保留私人覆盖文件
-./install.ps1 -Force
-./install.ps1 -Force -WhatIf
 ```
+
+已有仓库时进入其根目录运行安装即可。单选、更新与预览命令见[使用手册](docs/quickstart.md)；已有旧角色时按[迁移说明](docs/migration.md)处理。
 
 默认安装全部两个 agent。`_manuel` 的书籍和任务资料随其支持目录安装，没有其他可选 agent，也不需要选作者或召集多个顾问。安装目录为 CODEX_HOME/agents，未配置时为用户主目录下的 .codex/agents；安装后重启 Codex。
 
@@ -39,7 +40,7 @@
 
 知识库按用户指定路径、工作区 AGENTS.md 或 MANUEL_VAULT_PATH 解析。私人入口可存于 context.local.md；聊天记录需用户提供导出或可用连接，没有自动历史导入或后台监控。`_manuel` 提供分析与草稿；外部执行由用户或获授权主会话完成。
 
-详见[使用手册](docs/quickstart.md)、[兼容性](COMPATIBILITY.md)、[两入口决定](docs/agent-consolidation-review.md)。
+完整入口见[文档导航](docs/README.md)：使用、方法资料、评估、维护与历史记录均从这里查找。
 
 ## 验证
 
