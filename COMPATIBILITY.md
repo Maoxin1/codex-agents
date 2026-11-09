@@ -1,54 +1,26 @@
-# 兼容性说明
+# 兼容性与升级
 
-本项目提供 Codex 自定义 agent 配置与支持文件。本地检查可以验证结构、语法和部分约定；模型访问权限、产品功能和实际工具权限由你的 Codex 环境决定。
+## 当前发布集合
 
-## 默认入口迁移
+只提供 `_manuel`、`_mantou`。默认安装两者，-Agent 仅接受这两个名称；旧 -All 已移除。书籍资料位于 agents/_manuel/books，任务规范位于 agents/_manuel/tasks，均随 `_manuel` 安装。
 
-默认安装改为 `_manuel`、`_mantou`，并安装四个书籍方法包及公共读取库。`-All` 安装全部八个角色；`-All` 与 `-Agent` 不能同时使用。旧角色不会自动卸载，更新默认入口不更新其他已安装角色的 TOML；`-All -Force` 更新全部。context.local.md 是私有来源索引，安装更新时保留，不提供自动历史导入。
+旧入口退役是有意的兼容性变更。安装不会自动清除用户已有文件；使用[迁移脚本](docs/migration.md)识别并备份未修改的旧入口。修改过的配置、私人记录及旧支持目录保留。旧书籍路径环境变量作为来源访问兼容继续可用。
 
-## 运行要求
+## 运行环境
 
-- Codex 需要支持自定义 agent，以及所用的模型、推理强度和权限配置字段。
-- `_factbot`、`_manuel` 的仓库默认模型为 `gpt-5.6-terra`；`_invest`、`_mantou` 为 `gpt-5.6-sol`。安装配置不会自动授予这些模型的访问权限。
-- `_wayne`、`_clayton`、`_alan`、`_jim` 不固定模型或推理强度，继承调用方设置。其原书读取工具需要 Python 3.11 或更新版本，只使用标准库。
-- 安装和验证脚本需要 PowerShell。仓库检查接受 `python` 命令或 Windows 的 `py` 启动器。
-- `_mantou` 的剪贴板复制功能需要 Windows 交互会话，以及可用的 `Set-Clipboard`、`Get-Clipboard`。剪贴板不可用时，仍返回完整提示词供手动复制。
-- `_invest` 可在明确授权后维护 Obsidian；知识库路径和私人案例索引保存在公共仓库之外。
+- 安装、迁移与测试使用 PowerShell，离线 CI 覆盖 Windows 和 Python 3.11、3.13。
+- `_manuel` 默认模型 gpt-5.6-terra / medium；`_mantou` 为 gpt-5.6-sol / high。安装不会授予模型访问权，实际工具与权限取决于父会话环境。
+- 两者配置只读；方法约定不是独立沙箱保证。`_mantou` 的剪贴板写入依赖实际 Windows 会话与工具权限，失败应交付完整文本并如实说明。
+- 书籍读取器要求 Python 3.11+，只使用标准库。私有原书与 source.local.json 不分发；可选 PDF 锚点核验另需匹配原书与 PyMuPDF。
 
-三位 JTBD 顾问依赖相邻的 `_book_sources` 目录，安装任意一位时会自动安装该公共读取库。各自的 `source.local.json` 会在更新时保留。`_alan` 读取本地已经解包的 EPUB，不直接读取 AZW3；解包属于维护配置步骤，不由运行中的顾问自动执行。
+## 本地模型覆盖
 
-只读角色约定不等于系统已经完成权限隔离。父会话和本机权限策略仍然决定工具能读写什么、能否联网；遇到读取失败，应检查路径和环境，不应让顾问凭记忆补写原书观点。
-
-## 模型不可用时怎样处理
-
-先确认当前账号可以使用哪些模型。需要更换时，在相关 `agents/<name>.toml` 中只修改 `model`，保留该 agent 的工具、推理强度和行为边界，并显式检查本地覆盖：
+使用账号可用模型修改本地 TOML 后，可运行：
 
 ```powershell
 ./tests/validate_repository.ps1 -AllowModelOverride
 ```
 
-也可只检查对应 agent，例如：
+它仅放宽模型名称必须等于仓库默认值的检查，不验证账号权限、工具支持或回答质量。发布与默认 CI 使用严格检查。-Force 会替换受管 TOML；先备份本地偏好，升级后按需重新应用。私有覆盖和未受管文件保持原样。
 
-```powershell
-python agents/_factbot/tests/validate_factbot.py --allow-model-override
-```
-
-该选项只放宽“模型名称必须与仓库默认值完全一致”的检查；模型标识仍须是非空且不含空白的字符串。其他约束照常检查。它不验证账号权限、工具支持或回答质量。
-
-检查通过后，安装本地版本、重启 Codex，再用不敏感的小问题确认实际调用。独立调用脚本若有 `-Model` 参数，也需要单独传入所选模型。
-
-本地模型覆盖不要直接作为公共默认值提交。默认 CI 和发布前检查仍要求仓库模型默认值保持一致。带 `-Force` 的更新会替换受管 TOML，因此升级前应备份、之后按需重新应用本地模型偏好。
-
-## 更新前后检查什么
-
-1. 运行 `./install.ps1 -Force -WhatIf` 预览目标。
-2. 阅读[更新记录](CHANGELOG.md)，备份自己修改过的受管文件。
-3. 运行 `./tests/validate_repository.ps1`；仅在有意使用本地模型覆盖时加 `-AllowModelOverride`。
-4. 安装更新并重启 Codex。
-5. 用不敏感的问题确认所需 agent 的实际调用，再用于正式任务。
-
-默认 CI 使用 Windows，覆盖 Python 3.11 和 3.13，不调用付费模型服务，也不执行真实行为评估。
-
-需要批量评估时另行明确调用范围。独立 CLI 评估器在 Windows 上保留已有沙箱后端，并先做不消耗模型额度的只读预检；没有有效配置或读取失败时停止。修复与验证经过见[支持文件读取验证](docs/source-access-verification-2026-10-27.md)。
-
-连续首次安装多个 JTBD 顾问时，安装器复用内容相同的受管公共读取库文件；不同内容会在写入前报告冲突，检查更新后可显式使用 -Force。非受管文件继续保留。
+见[使用手册](docs/quickstart.md)和[验证状态](docs/verification-status.md)。历史八角色说明只保存在 docs/history，不是当前产品契约。

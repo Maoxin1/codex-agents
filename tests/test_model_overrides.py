@@ -13,8 +13,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 AGENTS = {
-    "_factbot": ("gpt-5.6-terra", "不得修改文件"),
-    "_invest": ("gpt-5.6-sol", "不执行证券交易"),
     "_mantou": ("gpt-5.6-sol", "Get-Clipboard -Raw"),
     "_manuel": ("gpt-5.6-terra", "unrelated private files"),
 }
@@ -131,7 +129,7 @@ class ModelOverrideTests(unittest.TestCase):
                 self.assert_result(agent, override=True, succeeds=False)
 
     def test_override_preserves_read_only_sandboxes(self) -> None:
-        for agent in ("_factbot", "_mantou", "_manuel"):
+        for agent in ("_mantou", "_manuel"):
             with self.subTest(agent=agent):
                 self.set_model(agent, ALTERNATIVE_MODEL)
                 self.replace(agent, 'sandbox_mode = "read-only"', 'sandbox_mode = "workspace-write"')

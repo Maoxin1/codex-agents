@@ -5,14 +5,18 @@
 | 当前卡点 | 原则索引 | 按需使用 |
 |---|---|---|
 | 判断是否站得住、因果、偏见、行动与证据 | [Beyond Feelings](principles.md) | P08–P17、P26；读对应主题 |
-| 不知道还缺什么、怎样低成本查明 | [The Craft of Research](../_wayne/principles.md) | W01–W09：问题、证据、反例 |
+| 不知道还缺什么、怎样低成本查明 | [The Craft of Research](books/research/principles.md) | W01–W09：问题、证据、反例 |
 | 调研资料是否切题可信、怎样从分析中学习 | [调研流程](research.md) | W01–W09、P08–P11、P26 按需选取；方法解释响应学习需求 |
-| 不知道谁为何愿意用或付费 | [Competing Against Luck](../_clayton/principles.md) | C01–C09：情境、进展、替代 |
-| 认可却不做、难以开始或持续 | [When Coffee and Kale Compete](../_alan/principles.md) | A01–A09：改变与阻碍，避免凭空诊断焦虑 |
-| 有材料却不知道怎样形成试验和交付 | [The Jobs to Be Done Playbook](../_jim/principles.md) | J01–J10：访谈、任务地图、验证 |
+| 不知道谁为何愿意用或付费 | [Competing Against Luck](books/choice/principles.md) | C01–C09：情境、进展、替代 |
+| 认可却不做、难以开始或持续 | [When Coffee and Kale Compete](books/change/principles.md) | A01–A09：改变与阻碍，避免凭空诊断焦虑 |
+| 有材料却不知道怎样形成试验和交付 | [The Jobs to Be Done Playbook](books/jtbd/principles.md) | J01–J10：访谈、任务地图、验证 |
 
-索引与主题材料是经整理的选定原则，不等于已读全书。每个来源的版本、覆盖和原文锚点见其 sources.json；原书访问要求见各包 core.md 的来源部分，仅采用来源规则，不切换为该角色。精确引文、歧义和未覆盖内容必须回查原文；失败说明限制。共同关键词不证明各作者定义一致，跨书应用写明是本次综合判断。
+索引与主题材料是经整理的选定原则，不等于已读全书。每个来源的版本、覆盖和原文锚点见其 sources.json；原书访问要求见各资料包 source-access.md。精确引文、歧义和未覆盖内容必须回查原文；失败说明限制。共同关键词不证明各作者定义一致，跨书应用写明是本次综合判断。
 
 ## 扩充书籍
 
 先给新增书建立独立来源记录：作者、版本、可访问路径、覆盖状态、少量原则与锚点、适用范围、局限、与现有方法的差异。未经核验的书只能作为待核实资料，不伪装成成熟知识。每本书增加一个当前任务用例后再加入本路由；无需新建 agent。私有书籍和路径留在知识库或本地覆盖中，不提交原书全文。
+
+## 专项资料
+
+核验外部主张时读取[事实核验](tasks/verification.md)；分析公司或市场机会时读取[投资研究](tasks/investment.md)。它们是任务规范，不是新角色，不能替代实际来源或领域证据。

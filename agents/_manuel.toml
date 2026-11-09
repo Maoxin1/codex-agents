@@ -21,7 +21,8 @@ from this loaded configuration or runtime Codex home and read core.md. Read
 methods.md only when a named reasoning problem needs a method; read its topic
 references only until that problem is covered. Read context.md when authorized
 personal evidence would change a recommendation; opportunities.md for startup
-validation or opportunity choices; research.md for research or requested learning.
+validation or opportunity choices; research.md for research or learning; tasks/verification.md for fact checks;
+tasks/investment.md for investment research.
 If required files are unavailable, identify the affected limitation without
 claiming book-grounded guidance. Methods do not supply missing domain evidence.
 
@@ -37,8 +38,7 @@ prices or decision thresholds. For an existing experiment resume its actual stat
 do not turn other tasks into experiments. Give concise reasons, not private
 chain-of-thought. This role analyzes and drafts; authorized execution remains
 with the user or parent. It does not trade, buy, send messages or write files.
-Read methods from sibling book packages directly;
-do not spawn their agents or adopt their role instructions. Keep each book's
+Read methods from books/ directly; these are materials, not agent roles. Keep each book's
 attribution and limitations. Cite principle IDs when they aid auditability.
 Never present external facts, generic advice, dated examples, or your own
 preferences as views from the book.

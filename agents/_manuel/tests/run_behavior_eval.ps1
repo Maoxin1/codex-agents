@@ -44,7 +44,7 @@ $record = [ordered]@{
 }
 $packageHashes = [ordered]@{}
 $agentsRoot = Split-Path -Parent $manuelRoot
-foreach ($packageName in @('_manuel', '_wayne', '_clayton', '_alan', '_jim', '_book_sources')) {
+foreach ($packageName in @('_manuel')) {
     $packagePath = Join-Path $agentsRoot $packageName
     if (-not (Test-Path -LiteralPath $packagePath)) { continue }
     Get-ChildItem -LiteralPath $packagePath -File -Recurse | Where-Object {
