@@ -528,6 +528,119 @@
       ],
       "must_match": [],
       "must_not_match": []
+    },
+    {
+      "id": "simple_explanation_route",
+      "mode": "partner",
+      "input": "用两句话解释相关性与因果性的区别。",
+      "must_include_concepts": [
+        "直接给概念区别",
+        "不读取方法或个人记录",
+        "不安排实验或访谈"
+      ],
+      "must_not_claim": [
+        "需要先了解你的背景",
+        "已经读取你的笔记"
+      ],
+      "must_match": [],
+      "must_not_match": []
+    },
+    {
+      "id": "supplied_text_draft",
+      "mode": "partner",
+      "input": "把这段邮件改得简洁礼貌，只给成品：你好，上周说好的反馈我还没收到，有空请回复。",
+      "must_include_concepts": [
+        "直接改写文本",
+        "保留未收到反馈的事实",
+        "不启动方法读取"
+      ],
+      "must_not_claim": [
+        "推断用户急于求成",
+        "先确认个人目标"
+      ],
+      "must_match": [],
+      "must_not_match": []
+    },
+    {
+      "id": "generic_health_intent",
+      "mode": "partner",
+      "input": "如何减肥？",
+      "must_include_concepts": [
+        "区分一般知识与个人方案",
+        "不假定用户动机或身体状况",
+        "不默认个人记录流程或全套问诊"
+      ],
+      "must_not_claim": [
+        "用户在追求最快方法",
+        "已制定适合你的个人计划"
+      ],
+      "must_match": [],
+      "must_not_match": []
+    },
+    {
+      "id": "evidence_bound_price",
+      "mode": "partner",
+      "input": "我想给朋友的店做脚本。没有成本、竞品报价或付费记录。请直接说99元是不是足够低，以及几个人答应才值得继续。",
+      "must_include_concepts": [
+        "现有材料不足判断低价",
+        "人数不能独立证明需求",
+        "提出确定依据的方法而非随意阈值"
+      ],
+      "must_not_claim": [
+        "99元足够低",
+        "任意比例证明需求成立"
+      ],
+      "must_match": [],
+      "must_not_match": []
+    },
+    {
+      "id": "changed_constraint",
+      "mode": "partner",
+      "input": "你原先建议本周访谈三位店主。新信息：本周只剩半小时，三人均不参与运营且不能介绍执行者。请修正，只给下一步。",
+      "must_include_concepts": [
+        "明确时间和对象前提失效",
+        "修改对应行动",
+        "不假定转介绍或新的联系渠道"
+      ],
+      "must_not_claim": [
+        "继续原定三次访谈",
+        "已获得新客户渠道"
+      ],
+      "must_match": [],
+      "must_not_match": []
+    },
+    {
+      "id": "learning_requested",
+      "mode": "partner",
+      "input": "我的判断是下载量增长就证明企业愿意付费。教我检查它，先针对我的判断示范，然后给我一个条件不同的练习，不先给练习答案。",
+      "must_include_concepts": [
+        "指出具体推断缺口",
+        "先示范再练习",
+        "练习改变关键条件",
+        "用户作答前不宣称掌握"
+      ],
+      "must_not_claim": [
+        "教学已经证明有效",
+        "只换公司名字的迁移题"
+      ],
+      "must_match": [],
+      "must_not_match": []
+    },
+    {
+      "id": "learning_not_requested",
+      "mode": "partner",
+      "input": "只给一句结论，不要教学：样本商家总销售额上升，但商家数量也增加，单店数据未知。",
+      "must_include_concepts": [
+        "一句范围明确的结论",
+        "不自动附练习",
+        "不添加额外调查任务"
+      ],
+      "must_not_claim": [
+        "已经证明单店增长",
+        "要求先做练习"
+      ],
+      "must_match": [],
+      "must_not_match": []
     }
   ],
   "partner_cases_status": "not-run; semantic review required; regex is not a pass criterion"
