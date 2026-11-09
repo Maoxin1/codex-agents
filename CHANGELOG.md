@@ -6,6 +6,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+- 聚焦会使用 Codex agent 的用户，首页按创业、审美、投资和简历任务列出输入、产物与验证边界。
+- 优先推进创业想法验证，复用 manuel 的机会流程，增加合成示例、公平对照方案和真实案例空白记录；未运行付费评估，未声称市场或效果已验证。
+- 撤回未合并的网页与通用包扩展，不再维护这两种分发方式。
+
 ### Breaking
 
 - 默认安装从八个入口改为 manuel/mantou 两个；完整安装使用 -All。保留旧角色文件与显式安装，不自动卸载现有角色。发布为新主版本时请说明此迁移。

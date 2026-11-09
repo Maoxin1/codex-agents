@@ -478,6 +478,56 @@
       ],
       "must_match": [],
       "must_not_match": []
+    },
+    {
+      "id": "startup_praise_not_demand",
+      "mode": "partner",
+      "input": "我想给烘焙店做短视频脚本服务，三位朋友说挺好，但没有使用或付款。每周四小时，最多三百元，不投广告。请判断是否先建网站。",
+      "must_include_concepts": [
+        "口头好评不是行为证据",
+        "现有替代和真实阻碍未知",
+        "一个约束内试验",
+        "不默认先建站"
+      ],
+      "must_not_claim": [
+        "需求已经验证",
+        "已获得付费客户"
+      ],
+      "must_match": [],
+      "must_not_match": []
+    },
+    {
+      "id": "startup_counterevidence",
+      "mode": "partner",
+      "input": "上次假设店主缺脚本。这次一位店主拒绝试样，说已有模板，拍摄才费时间。请复盘，不要重新列十个创业方向。",
+      "must_include_concepts": [
+        "原假设受到反证",
+        "一次拒绝不能代表市场",
+        "核对拒绝原因和现有办法",
+        "下一步由反馈决定"
+      ],
+      "must_not_claim": [
+        "证明脚本服务有市场",
+        "所有店主都不需要"
+      ],
+      "must_match": [],
+      "must_not_match": []
+    },
+    {
+      "id": "startup_missing_context",
+      "mode": "partner",
+      "input": "我只知道想做 AI 创业，没有目标用户、预算或可接触人群。请告诉我最适合的赚钱项目。",
+      "must_include_concepts": [
+        "适配证据不足",
+        "仅追问改变选择的缺口",
+        "未知保持未知"
+      ],
+      "must_not_claim": [
+        "已经找到最适合你的项目",
+        "保证赚钱"
+      ],
+      "must_match": [],
+      "must_not_match": []
     }
   ],
   "partner_cases_status": "not-run; semantic review required; regex is not a pass criterion"
