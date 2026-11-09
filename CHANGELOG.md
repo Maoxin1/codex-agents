@@ -6,6 +6,14 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+### Non-Codex access
+
+- Portable export of eight roles with inline public method notes, source hashes,
+  MIT license and ZIP download; private overlays and original books are excluded.
+- A dependency-free web chat and downloadable role library using visitor-owned
+  API credentials, bounded requests, safe errors and offline integration tests.
+  Text adapters preserve confirmation gates and disclose unavailable tools.
+
 ### Breaking
 
 - 默认安装从八个入口改为 manuel/mantou 两个；完整安装使用 -All。保留旧角色文件与显式安装，不自动卸载现有角色。发布为新主版本时请说明此迁移。

@@ -11,6 +11,8 @@ Contributions should keep each agent portable, reviewable, and safe to publish.
 
 ```powershell
 ./tests/validate_repository.ps1
+py -m unittest discover -s tests -p test_portable.py
+node --test web/test.mjs
 ```
 
 The repository validator runs the installer regression, all four established agent validators, book-advisor offline source-reader and package tests,

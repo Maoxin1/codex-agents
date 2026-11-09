@@ -1,0 +1,1 @@
+{"name":"mantou-agent-room","private":true,"type":"module","scripts":{"build":"node build.mjs","start":"node local.mjs","test":"node --test test.mjs"},"engines":{"node":">=22"}}

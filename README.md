@@ -1,5 +1,7 @@
 # Codex Agents
 
+**不使用 Codex？** 可以直接使用[网页顾问室](https://mantou-agent-room.xmiao2343.chatgpt.site)，或[下载通用角色包](https://mantou-agent-room.xmiao2343.chatgpt.site/download)。网页使用访客自己的 OpenAI API Key；文本适配版不含联网与本地执行能力。自建与导出见[非 Codex 使用指南](docs/non-codex.md)。
+
 两个日常入口：`_manuel` 帮你理解目标、检查判断并迈出下一步；`_mantou` 帮你把需求说清楚。
 
 ## 开始使用

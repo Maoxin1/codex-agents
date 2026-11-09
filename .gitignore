@@ -3,3 +3,7 @@ __pycache__/
 source.local.json
 
 context.local.md
+/dist/
+/web/data/
+/web/dist/
+/web/.openai/
