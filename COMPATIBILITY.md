@@ -13,6 +13,10 @@
 - 两者配置只读；方法约定不是独立沙箱保证。`_mantou` 的剪贴板写入依赖实际 Windows 会话与工具权限，失败应交付完整文本并如实说明。
 - 书籍读取器要求 Python 3.11+，只使用标准库。私有原书与 source.local.json 不分发；可选 PDF 锚点核验另需匹配原书与 PyMuPDF。
 
+## 2026-11-13 默认模型文档核对
+
+OpenAI 官方模型卡仍列出 [gpt-5.6-terra](https://developers.openai.com/api/docs/models/gpt-5.6-terra) 与 [gpt-5.6-sol](https://developers.openai.com/api/docs/models/gpt-5.6-sol)，均支持本包使用的 medium / high 推理级别。本次保留默认配置，不升级或替换模型。模型卡说明不保证任一账号的 Codex 访问权，也不证明当前两入口已完成原生调用或效果验收；实际账号以可用模型与工具为准。
+
 ## 本地模型覆盖
 
 使用账号可用模型修改本地 TOML 后，可运行：
