@@ -7,6 +7,7 @@
 | 需要做什么 | 文档 |
 |---|---|
 | 安装、选入口、调用和排错 | [使用手册](quickstart.md) |
+| 区分 main、固定源码和历史发行版 | [版本与下载入口](release-status.md) |
 | 从旧八角色版本升级 | [迁移说明](migration.md) |
 | 检查模型、运行环境与本地覆盖 | [兼容性](../COMPATIBILITY.md) |
 | 使用思考与行动伙伴 | [_manuel 指南](../agents/_manuel/README.md) |

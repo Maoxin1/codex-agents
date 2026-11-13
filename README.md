@@ -14,6 +14,8 @@
 
 ## 安装与使用
 
+当前两个入口维护于 `main`，尚未发布为新的语义版本；GitHub Release `v0.1.1` 是旧角色版本。下载、固定源码与升级边界见[版本与下载入口](docs/release-status.md)。
+
 在 PowerShell 中获取仓库并安装：
 
 ```powershell
